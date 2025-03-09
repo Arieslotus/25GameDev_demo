@@ -137,8 +137,9 @@ MonoBehaviour:
   riseSpeed: 13
   riseFactor: 0.2
   riseMass: 10
-  maxScale: 2
+  maxScale: 1.5
   scaleSpeed: 0.02
+  isFloating: 1
 --- !u!50 &923491804290858521
 Rigidbody2D:
   serializedVersion: 4

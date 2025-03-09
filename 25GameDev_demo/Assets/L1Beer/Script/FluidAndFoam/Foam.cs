@@ -13,12 +13,12 @@ public class Foam : MonoBehaviour
     private float originalMass, originalGrav;//记录原始泡沫重力，质量
 
     //scale
-    public float maxScale = 2f;      // 泡沫最大放大尺寸
+    public float maxScale = 1.5f;      // 泡沫最大放大尺寸
     public float scaleSpeed = 0.02f; // 泡沫放大的速度
 
 
     private Rigidbody2D rb;
-    bool isFloating = true;//泡沫是否正在上浮
+    public bool isFloating = true;//泡沫是否正在上浮
     float rayDistance = 5f;//射线检测长度
 
 
@@ -116,6 +116,20 @@ void Start()
                 rb.velocity = Vector2.zero;
             }
 
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (FindObjectOfType<gameController>().gameStart)
+        {
+            //check
+            if (collision.gameObject.name == "desk")
+            {
+                FindObjectOfType<gameController>().roundResult = 2;
+                FindObjectOfType<gameController>().gameStart = false;
+                Debug.Log("foam touch desk");
+            }
         }
     }
 }

@@ -45,3 +45,6 @@ TagManager:
   - name: foams
     uniqueID: 1378321197
     locked: 0
+  - name: cup
+    uniqueID: 4074296755
+    locked: 0

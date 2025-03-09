@@ -20,6 +20,11 @@ public class FoamsController : MonoBehaviour
 
     CalFoamSpawnPos calFoamSpawnPosController;
 
+
+    //delete
+    public Transform parentFoam; // 需要删除子物体的父对象
+
+
     void Update()
     {
         if(calFoamSpawnPosController == null)
@@ -42,6 +47,7 @@ public class FoamsController : MonoBehaviour
             }           
             timeSinceLastSpawn = 0f;
         }
+
     }
 
     void SpawnFoam()
@@ -60,5 +66,32 @@ public class FoamsController : MonoBehaviour
     public void AddToFoamsList(Transform foam)
     {
         FoamsList.Add(foam);
+    }
+
+    public void DeleteFoams(int foamDeleteCount)
+    {
+        List<Transform> childList = new List<Transform>();
+
+        // 获取所有子物体
+        foreach (Transform child in parentFoam)
+        {
+            if(child.GetComponent<Foam>().isFloating==false)
+                childList.Add(child);
+        }
+
+        // 确保不会删除超过实际子物体数量
+        int actualDeleteCount = Mathf.Min(foamDeleteCount, childList.Count);
+
+        for (int i = 0; i < actualDeleteCount; i++)
+        {
+            // 随机选择一个子物体索引
+            int randomIndex = Random.Range(0, childList.Count);
+
+            // 删除子物体
+            Destroy(childList[randomIndex].gameObject);
+
+            // 从列表中移除已删除的子物体，防止重复删除
+            childList.RemoveAt(randomIndex);
+        }
     }
 }

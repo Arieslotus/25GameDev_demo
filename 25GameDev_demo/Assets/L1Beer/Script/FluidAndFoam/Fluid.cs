@@ -175,6 +175,20 @@ public class Fluid : MonoBehaviour
             isInBottle = true;
             //flag_neverRaycast = true;
         }
+    }
 
+    //游戏结束
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //水位线
+        if (collision.gameObject.name == "waterLine" && isInBottle)
+        {
+            FindObjectOfType<gameController>().gameStart = false;
+            if (FindObjectOfType<gameController>().roundResult != 2)
+            {
+                FindObjectOfType<gameController>().roundResult = 1;
+            }
+            //Debug.Log("water touch line");
+        }
     }
 }
