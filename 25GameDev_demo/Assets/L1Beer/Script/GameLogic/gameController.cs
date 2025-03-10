@@ -18,6 +18,9 @@ public class gameController : MonoBehaviour
     public Button roundWin;
     public Button roundLoose;
     public float waitToNextRoundTime = 3f;
+
+    //flag
+    bool flag1 = true;
     
     //public Button restart;
 
@@ -50,13 +53,26 @@ public class gameController : MonoBehaviour
             timeText.text = "Time: " + elapsedTime.ToString("F2") + "s"; // 显示两位小数的秒数
 
             timeLine.image.fillAmount = elapsedTime / 25f;
+
+            flag1 = true;
         }
         else if (!gameStart)
         {
+            //sfx
+            AudioManager.instance.PauseWaterSound();
+
             if (roundResult == 1)
             {
                 roundWin.gameObject.SetActive(true);
                 //restart.gameObject.SetActive(true);
+
+                if (flag1)
+                {
+                    //sfx
+                    AudioManager.instance.PlayOneShot(FMODEvents.instance.Default_gameWin, this.transform.position);
+                    flag1 = false;
+                }
+
 
                 //round结束
                 waitToNextR += Time.deltaTime;
@@ -86,6 +102,12 @@ public class gameController : MonoBehaviour
                 roundLoose.gameObject.SetActive(true);
                 //restart.gameObject.SetActive(true);
 
+                if (flag1)
+                {
+                    //sfx
+                    AudioManager.instance.PlayOneShot(FMODEvents.instance.Default_gameFailed, this.transform.position);
+                    flag1 = false;
+                }
 
                 //round结束
                 waitToNextR += Time.deltaTime;

@@ -201,6 +201,120 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 204559621}
   m_CullTransparentMesh: 1
+--- !u!1 &334129713
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 334129715}
+  - component: {fileID: 334129714}
+  m_Layer: 0
+  m_Name: FModEvents
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &334129714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 334129713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93e41ebe88f2bd440b93711dfaa4d452, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Default_write>k__BackingField:
+    Guid:
+      Data1: -992911110
+      Data2: 1284971086
+      Data3: -1343041089
+      Data4: 1796169611
+    Path: event:/General/write
+  <Default_gameWin>k__BackingField:
+    Guid:
+      Data1: 885321928
+      Data2: 1240987906
+      Data3: 1963866016
+      Data4: -546011030
+    Path: event:/General/gameWin
+  <Default_gameFailed>k__BackingField:
+    Guid:
+      Data1: -631851243
+      Data2: 1229722525
+      Data3: 1739408774
+      Data4: -1120579014
+    Path: event:/General/gameFailed
+  <Default_error>k__BackingField:
+    Guid:
+      Data1: -1349523673
+      Data2: 1221989933
+      Data3: -1205867338
+      Data4: 86138084
+    Path: event:/General/error
+  <Default_gameEnd>k__BackingField:
+    Guid:
+      Data1: 289104974
+      Data2: 1199616629
+      Data3: -1102809463
+      Data4: 627693671
+    Path: event:/General/gameEnd
+  <All_BGM>k__BackingField:
+    Guid:
+      Data1: -1054097917
+      Data2: 1223295911
+      Data3: 40949890
+      Data4: 627295684
+    Path: event:/bgm
+  <L1Beer_water>k__BackingField:
+    Guid:
+      Data1: -348764641
+      Data2: 1257413168
+      Data3: -1552308051
+      Data4: -81071447
+    Path: event:/GamePlay/water
+  <L1Beer_reduceFoam>k__BackingField:
+    Guid:
+      Data1: -1208497808
+      Data2: 1244220569
+      Data3: 895635102
+      Data4: -290358463
+    Path: event:/GamePlay/reduceFoam
+  <L1Beer_addFoam>k__BackingField:
+    Guid:
+      Data1: -909847992
+      Data2: 1074365054
+      Data3: 445528509
+      Data4: 1927306974
+    Path: event:/GamePlay/addFoam
+  <L1Beer_foamOutOfCup>k__BackingField:
+    Guid:
+      Data1: -533984567
+      Data2: 1256125225
+      Data3: 589248655
+      Data4: 512949290
+    Path: event:/GamePlay/foamsOutOfCup
+--- !u!4 &334129715
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 334129713}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &626962008
 GameObject:
   m_ObjectHideFlags: 0
@@ -505,7 +619,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1330005991}
   - component: {fileID: 1330005990}
-  - component: {fileID: 1330005989}
+  - component: {fileID: 1330005993}
+  - component: {fileID: 1330005992}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -513,14 +628,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1330005989
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1330005988}
-  m_Enabled: 1
 --- !u!20 &1330005990
 Camera:
   m_ObjectHideFlags: 0
@@ -582,6 +689,108 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1330005992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1330005988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nonRigidbodyVelocity: 0
+  attenuationObject: {fileID: 0}
+--- !u!114 &1330005993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1330005988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
+  m_TaaSettings:
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
+--- !u!1 &1478011040
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1478011042}
+  - component: {fileID: 1478011041}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1478011041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1478011040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7440685abf50d864bb4daf625cc56762, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1478011042
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1478011040}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -698,3 +907,5 @@ SceneRoots:
   - {fileID: 1330005991}
   - {fileID: 2059255772}
   - {fileID: 1287441206}
+  - {fileID: 1478011042}
+  - {fileID: 334129715}

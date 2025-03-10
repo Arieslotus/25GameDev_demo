@@ -61,6 +61,8 @@ public class CupController : MonoBehaviour
     private KeyCode keyAction2 = KeyCode.F;
     private bool hasSwitchedKey = false;
 
+    //flag
+    bool flag1, flag2 ,flag3= true;
 
     void Start()
     {
@@ -74,7 +76,8 @@ public class CupController : MonoBehaviour
         defaultFoamRate = FindObjectOfType<FoamsController>().spawnRate;
         currentFoamRate = FindObjectOfType<FoamsController>().spawnRate;
         strengthF.image.fillAmount = 1;
-        
+
+
     }
 
     void Update()
@@ -82,6 +85,7 @@ public class CupController : MonoBehaviour
 
         if (FindObjectOfType<gameController>().gameStart)
         {
+
             FindObjectOfType<FluidsController>().startSpawn = true;
             timer += Time.deltaTime; // 计时
             //交换按键
@@ -103,8 +107,17 @@ public class CupController : MonoBehaviour
             if (timer >= 1.5f && !hasStartFoam) // 3 秒后执行
             {
                 FindObjectOfType<FoamsController>().startSpawn = true;
+
+                //sfx
+                //AudioManager.instance.PlayOneShot(FMODEvents.instance.L1Beer_water, this.transform.position);
+                AudioManager.instance.PlayWaterSound();
                 Debug.Log("startFoam");
                 hasStartFoam = true; // 确保只执行一次
+            }
+            else if (!hasStartFoam && timer < 1.5f)
+            {
+                //sfx
+                //AudioManager.instance.PlayOneShot(FMODEvents.instance.L1Beer_water, this.transform.position);
             }
 
             //F
@@ -133,6 +146,7 @@ public class CupController : MonoBehaviour
             {
                 strengthJ.image.fillAmount -= strengthDecreaseRate * 0.01f * Time.deltaTime;
             }
+
 
         }
         else
@@ -165,6 +179,8 @@ public class CupController : MonoBehaviour
             {
                 playerFPressing = false;
                 Debug.Log("unpressing");
+
+ 
             }
             if (Input.GetKeyDown(keyAction1))
             {
@@ -180,18 +196,36 @@ public class CupController : MonoBehaviour
             if (strengthF.image.fillAmount < 0.01 * strengthDecreaseRate)
             {
                 FneedRelax = true;
+
+                if (flag1)
+                {
+                    //sfx
+                    AudioManager.instance.PlayOneShot(FMODEvents.instance.Default_error, this.transform.position);
+                    flag1 = false;
+                }
+
             }
             else if (strengthF.image.fillAmount > 0.34)
             {
                 FneedRelax = false;
+
+                flag1 = true;
             }
             if (strengthJ.image.fillAmount < 0.01 * strengthDecreaseRate)
             {
                 JneedRelax = true;
+                if (flag2)
+                {
+                    //sfx
+                    AudioManager.instance.PlayOneShot(FMODEvents.instance.Default_error, this.transform.position);
+                    flag2 = false;
+                }
             }
             else if (strengthJ.image.fillAmount > 0.34)
             {
                 JneedRelax = false;
+
+                flag2 = true;
             }
 
             //长按
@@ -276,7 +310,8 @@ public class CupController : MonoBehaviour
                 {
                     currentFoamRate = defaultFoamRate * addFoamRate;
                     currentMoveDistance = moveDistance;
-                    FindObjectOfType<FoamsController>().DeleteFoams(deleteFoamNum);
+                    FindObjectOfType<FoamsController>().DeleteFoams(deleteFoamNum);//sfx
+
                     if (!isKeyHeldLongEnough)
                     {
                         isMoving = true;
@@ -292,6 +327,10 @@ public class CupController : MonoBehaviour
                 {
                     currentFoamRate = defaultFoamRate / addFoamRate;
                     currentMoveDistance = -moveDistance;
+
+                    //sfx
+                    AudioManager.instance.PlayOneShot(FMODEvents.instance.L1Beer_addFoam, this.transform.position);
+
                     if (!isKeyHeldLongEnough)
                     {
                         isMoving = true;

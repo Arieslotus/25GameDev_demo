@@ -79,6 +79,13 @@ public class FoamsController : MonoBehaviour
                 childList.Add(child);
         }
 
+        if(childList.Count > 0)
+        {
+            //sfx
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.L1Beer_reduceFoam, this.transform.position);
+
+        }
+
         // 确保不会删除超过实际子物体数量
         int actualDeleteCount = Mathf.Min(foamDeleteCount, childList.Count);
 
