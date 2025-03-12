@@ -14,11 +14,6 @@ public class AudioManager : MonoBehaviour
 
     private EventInstance SpecialBGMEventInstance;
 
-    //new
-    private FMOD.System system;
-    private FMOD.Sound sound;
-    private FMOD.Channel channel;
-    private FMOD.ChannelGroup channelGroup;
 
     private EventInstance eventInstance;
 
@@ -40,44 +35,13 @@ public class AudioManager : MonoBehaviour
     {
         InitializeBGM(FMODEvents.instance.All_BGM);
 
-        //// 获取 FMOD 系统
-        //system = RuntimeManager.CoreSystem;
-
-        //// 创建 ChannelGroup
-        //FMOD.RESULT result = system.createChannelGroup("MyChannelGroup", out channelGroup);
-        //Debug.Log("创建 ChannelGroup: " + result);
-
-        //// 连接 ChannelGroup 到 MasterGroup
-        //FMOD.ChannelGroup masterGroup;
-        //system.getMasterChannelGroup(out masterGroup);
-        //masterGroup.addGroup(channelGroup, false);
-
-        //// 加载音效
-        ////string soundPath = Application.streamingAssetsPath + "/YourSound.wav";
-        //string soundPath = FMODEvents.instance.L1Beer_water.Path;
-        //result = system.createSound(soundPath, FMOD.MODE.DEFAULT, out sound);
-        //Debug.Log("加载音效: " + soundPath + " 结果: " + result);
-
-        //if (result != FMOD.RESULT.OK)
-        //{
-        //    Debug.LogError("音效加载失败: " + result);
-        //}
-
         // 使用 FMOD 事件实例
         eventInstance = RuntimeManager.CreateInstance(FMODEvents.instance.L1Beer_water);
     }
 
-    private void Update()
-    {
-        // 确保 FMOD 系统定期更新
-        //system.update();
-    }
 
     private void OnDestroy()
     {
-        // 释放资源
-        //sound.release();
-        //channelGroup.release();
         if (eventInstance.isValid())
         {
             eventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
@@ -113,7 +77,6 @@ public class AudioManager : MonoBehaviour
             {
                 // 事件已经停止，重新播放
                 eventInstance.start();
-                Debug.Log("重新播放 FMOD 事件: " + FMODEvents.instance.L1Beer_water.Path);
             }
             else
             {

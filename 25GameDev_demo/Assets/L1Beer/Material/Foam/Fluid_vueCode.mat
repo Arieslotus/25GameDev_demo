@@ -34,6 +34,6 @@ Material:
     - _Stroke2: 0.61
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _StrokeColor: {r: 0.85849047, g: 0.9646226, b: 1, a: 1}
+    - _StrokeColor: {r: 0.9803922, g: 0.93725497, b: 0.86274517, a: 1}
     - _StrokeColor2: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

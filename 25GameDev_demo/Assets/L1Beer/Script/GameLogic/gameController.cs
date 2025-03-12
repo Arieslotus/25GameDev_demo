@@ -61,6 +61,7 @@ public class gameController : MonoBehaviour
             //sfx
             AudioManager.instance.PauseWaterSound();
 
+            //Finish
             if (roundResult == 1)
             {
                 roundWin.gameObject.SetActive(true);
@@ -73,23 +74,44 @@ public class gameController : MonoBehaviour
                     flag1 = false;
                 }
 
-
-                //round结束
-                waitToNextR += Time.deltaTime;
-                if (waitToNextR>=waitToNextRoundTime)
+                //游戏结束
+                if (roundResult != 0 && sceneManager.gameCount == 3 && sceneManager.roundCount % 2 == 0)
                 {
-                    RoundEnd();
+                    //round结束
+                    waitToNextR += Time.deltaTime;
+                    if (waitToNextR >= waitToNextRoundTime)
+                    {
+                        SceneManager.LoadScene("L1End");
+                    }
                 }
+                else
+                {
+                    //round结束
+                    waitToNextR += Time.deltaTime;
+                    if (waitToNextR >= waitToNextRoundTime)
+                    {
+                        RoundEnd();
+                    }
+                }
+                
                 // 记录结算时间
                 if (sceneManager.roundCount % 2 != 0)  //r1
                 {
                     sceneManager.playerJTime = elapsedTime;
-                    sceneManager.playerJresult = "Win";
+                    sceneManager.playerJresult = "Finish";
+                    if(sceneManager.playerJBestTime==0 || sceneManager.playerJTime< sceneManager.playerJBestTime)
+                    {
+                        sceneManager.playerJBestTime = sceneManager.playerJTime;
+                    }
                 }
                 else if(sceneManager.roundCount % 2== 0)  //r2
                 {
                     sceneManager.playerFTime = elapsedTime;
-                    sceneManager.playerFresult = "Win";
+                    sceneManager.playerFresult = "Finish";
+                    if (sceneManager.playerFBestTime==0 || sceneManager.playerFTime < sceneManager.playerFBestTime)
+                    {
+                        sceneManager.playerFBestTime = sceneManager.playerFTime;
+                    }
                     if (!scoreSettled)
                     {
                         ScoreSettle();
@@ -97,6 +119,7 @@ public class gameController : MonoBehaviour
                     }
                 }
             }
+            //lose
             else if (roundResult == 2)
             {
                 roundLoose.gameObject.SetActive(true);
@@ -109,22 +132,36 @@ public class gameController : MonoBehaviour
                     flag1 = false;
                 }
 
-                //round结束
-                waitToNextR += Time.deltaTime;
-                if (waitToNextR >= waitToNextRoundTime)
+                //游戏结束
+                if (roundResult != 0 && sceneManager.gameCount == 3 && sceneManager.roundCount % 2 == 0)
                 {
-                    RoundEnd();
+                    //round结束
+                    waitToNextR += Time.deltaTime;
+                    if (waitToNextR >= waitToNextRoundTime)
+                    {
+                        SceneManager.LoadScene("L1End");
+                    }
                 }
+                else
+                {
+                    //round结束
+                    waitToNextR += Time.deltaTime;
+                    if (waitToNextR >= waitToNextRoundTime)
+                    {
+                        RoundEnd();
+                    }
+                }
+                
                 // 记录结算时间
                 if (sceneManager.roundCount % 2 != 0)  //r1
                 {
                     sceneManager.playerJTime = elapsedTime;
-                    sceneManager.playerJresult = "Loose";
+                    sceneManager.playerJresult = "Fail";
                 }
                 else if (sceneManager.roundCount % 2 == 0)  //r2
                 {
                     sceneManager.playerFTime = elapsedTime;
-                    sceneManager.playerFresult = "Loose";
+                    sceneManager.playerFresult = "Fail";
                     if (!scoreSettled)
                     {
                         ScoreSettle();
@@ -168,28 +205,45 @@ public class gameController : MonoBehaviour
         //大局积分
         if (sceneManager.playerFresult == sceneManager.playerJresult)
         {
-            if (sceneManager.playerJTime > sceneManager.playerFTime)
+            if (sceneManager.playerFresult == "Finish")
             {
-                sceneManager.playerFScore++;
-                Debug.Log("tie + F++");
+                if (sceneManager.playerJTime > sceneManager.playerFTime)
+                {
+                    sceneManager.playerFScore++;
+                    Debug.Log("tie Finish + F++");
+                }
+                else
+                {
+                    sceneManager.playerJScore++;
+                    Debug.Log("tie Finish + J++");
+                }
             }
             else
             {
-                sceneManager.playerJScore++;
-                Debug.Log("tie + J++");
+                if (sceneManager.playerJTime < sceneManager.playerFTime)
+                {
+                    sceneManager.playerFScore++;
+                    Debug.Log("tie lose + F++");
+                }
+                else
+                {
+                    sceneManager.playerJScore++;
+                    Debug.Log("tie lose + J++");
+                }
             }
+            
         }
         else
         {
-            if (sceneManager.playerFresult == "Win")
+            if (sceneManager.playerFresult == "Finish")
             {
                 sceneManager.playerFScore++;
-                Debug.Log("F win");
+                Debug.Log("F Finish");
             }
-            else if (sceneManager.playerJresult == "Win")
+            else if (sceneManager.playerJresult == "Finish")
             {
                 sceneManager.playerJScore++;
-                Debug.Log("J win");
+                Debug.Log("J Finish");
             }
         }
     }

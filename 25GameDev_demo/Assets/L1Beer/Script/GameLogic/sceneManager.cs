@@ -12,14 +12,23 @@ public class sceneManager : MonoBehaviour
     public static int gameCount = 0;
     public static float playerJTime = 0;
     public static float playerFTime = 0;
+    public static float playerJBestTime = 0;
+    public static float playerFBestTime = 0;
+    public static float playerBestTime = 0;
+    public static int playerBest = 0;
+
+
     public static string playerJresult = " ";
     public static string playerFresult = " ";
 
     public Text p1Time;
     public Text p2Time;
+    
 
     public Text p1Score;
     public Text p2Score;
+
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +53,10 @@ public class sceneManager : MonoBehaviour
         gameCount = 0;
         playerJTime = 0;
         playerFTime = 0;
+        playerJBestTime = 0;
+        playerFBestTime = 0;
+        playerBestTime = 0;
+
         playerJresult = " ";
         playerFresult = " ";
 
