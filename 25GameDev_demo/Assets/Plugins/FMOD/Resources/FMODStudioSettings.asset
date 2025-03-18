@@ -672,8 +672,8 @@ MonoBehaviour:
   switchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: ../../GameDev2025_1/Assets/L1Beer/Fmod/2503_gameDev_demo1/2503_gameDev_demo1.fspro
-  sourceBankPath: ../../GameDev2025_1/Assets/L1Beer/Fmod/2503_gameDev_demo1/Build
+  sourceProjectPath: E:/FMod/Projects/2503_gameDev_demo1/2503_gameDev_demo1.fspro
+  sourceBankPath: E:/FMod/Projects/2503_gameDev_demo1/Build
   sourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 1
