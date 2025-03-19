@@ -66,7 +66,7 @@ public class L2gameController : MonoBehaviour
         Spawner.transform.position = new Vector3(x, y, transform.position.z);
     }
 
-    private void SpawnNote()
+    public void SpawnNote()
     {
         // 实例化音符预制体
         GameObject note = Instantiate(notePrefab, spawnPoint.position, Quaternion.identity);

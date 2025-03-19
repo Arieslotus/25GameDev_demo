@@ -7,6 +7,7 @@ public class L2noteController : MonoBehaviour
     [Header("目标设置")]
     public Transform noteTarget; // 目标点
     public float circleRadius = 2f; // 圆圈的半径
+    private Vector3 noteTargetPosition;
 
     [Header("移动设置")]
     public float moveTime = 2f; // 音符从生成点到圆圈边线的时间
@@ -15,6 +16,7 @@ public class L2noteController : MonoBehaviour
     private Vector3 startPosition; // 音符的生成位置
     private Vector3 targetPosition; // 音符的目标位置（圆圈边线上的点）
     private float journeyLength; // 生成点到目标点的距离
+    private float journeyLengthTotal; // 生成点到目标点的距离
     private float startTime; // 音符开始移动的时间
 
     void Start()
@@ -29,6 +31,9 @@ public class L2noteController : MonoBehaviour
         startPosition = transform.position; // 记录生成位置
         targetPosition = GetIntersectionPointOnCircle(startPosition, noteTarget.position); // 计算交点
         journeyLength = Vector3.Distance(startPosition, targetPosition); // 计算距离
+        journeyLengthTotal = Vector3.Distance(startPosition, noteTargetPosition); // 计算距离
+        noteTargetPosition = noteTarget.position;
+        gameObject.GetComponent<Collider2D>().enabled = false;
 
         // 根据移动时间和距离计算速度
         moveSpeed = journeyLength / moveTime;
@@ -45,16 +50,24 @@ public class L2noteController : MonoBehaviour
         float distanceCovered = (Time.time - startTime) * moveSpeed;
 
         // 计算当前移动的进度（0 到 1 之间）
-        float fractionOfJourney = distanceCovered / journeyLength;
+        //float targetFractionOfJourney = distanceCovered / journeyLength;
+
+        float fractionOfJourney = distanceCovered / journeyLengthTotal;
 
         // 使用 Lerp 平滑移动
-        transform.position = Vector3.Lerp(startPosition, targetPosition, fractionOfJourney);
+        transform.position = Vector3.Lerp(startPosition, noteTargetPosition, fractionOfJourney);
 
-        //// 如果到达目标点，销毁音符
-        //if (fractionOfJourney >= 1f)
-        //{
-        //    Destroy(gameObject);
-        //}
+        // 如果进入目标区域
+        if (fractionOfJourney >= journeyLength/journeyLengthTotal)
+        {
+            gameObject.GetComponent<Collider2D>().enabled = true;
+        }
+
+        //到达玩家中心
+        if (fractionOfJourney >= 1f)
+        {
+            //Destroy(gameObject);
+        }
     }
 
     // 计算生成点到目标点的连线与圆圈边线的交点
