@@ -1,0 +1,129 @@
+diff a/25GameDev_demo/Assets/L2Kick/Scripts/L2gameController.cs b/25GameDev_demo/Assets/L2Kick/Scripts/L2gameController.cs	(rejected hunks)
+@@ -1,83 +1,86 @@
+ using System.Collections;
+ using System.Collections.Generic;
++using Unity.VisualScripting;
+ using UnityEngine;
+ using static UnityEngine.GraphicsBuffer;
+ 
+ public class L2gameController : MonoBehaviour
+ {
+     [Header("��ת����")]
+-    public GameObject Spawner;
++    public Transform Spawner;
+     public Transform spawnerTarget; // Χ����ת��Ŀ�����
+-    public float radius = 2f; // ��ת�뾶
+-    public float speed = 1f; // ��ת�ٶ�
++    public float spawnerRadius = 13f; // ��ת�뾶
++    public float rotationSpeed; // ��ת�ٶȣ��Ƕ�/s��
++
++    private float angle = 0f; // ��ǰ��ת�Ƕ�
++    float startOffsetAngle = -90; //dont edit //��ʼ��ת��ƫ��90d
++    float catRotationOffsetAngle;
++
+     [Header("�����������")]
+     public GameObject notePrefab; // ���Ԥ����
+-    public Transform spawnPoint; // ������ɵ�λ��
+     public float spawnInterval = 1f; // ���������ʱ����
+ 
+     [Header("Ŀ������")]
+     public Transform noteTarget; // Ŀ��㣨���ڴ��ݸ������������
+-    public float circleRadius = 2f; // ԲȦ�İ뾶�����ڴ��ݸ������������
+-    public float moveTime = 2f; // ����ƶ�ʱ�䣨���ڴ��ݸ������������
++    public float accCircleRadius = 2f; // ԲȦ�İ뾶�����ڴ��ݸ������������
++    public float moveToAccTime = 2f; // ����ƶ���׼ȷ�ߵ�ʱ�䣨���ڴ��ݸ������������
+ 
+-    private float angle = 0f; // ��ǰ��ת�Ƕ�
++    [Header("è")]
++    public CatController cat;
+ 
+-
+-    // Start is called before the first frame update
+-    void Start()
++    private void Awake()
+     {
+-        if (notePrefab == null)
+-        {
+-            Debug.LogWarning("���������Ԥ���壡");
+-            return;
+-        }
++        //rotate           
++        catRotationOffsetAngle = -moveToAccTime * rotationSpeed;
+ 
+-        if (spawnPoint == null)
+-        {
+-            Debug.LogWarning("�������������λ�ã�");
+-            return;
+-        }
++        angle += startOffsetAngle;
++        cat.offsetAngle = catRotationOffsetAngle;
+ 
+-        if (noteTarget == null)
+-        {
+-            Debug.LogWarning("������Ŀ�����");
+-            return;
+-        }
++        SpawnerRote();
++    }
+ 
++    void Start()
++    {
+         // ʹ�� InvokeRepeating ÿ��һ��ʱ���������
+         InvokeRepeating(nameof(SpawnNote), 0f, spawnInterval);
++
++        //cat
++        cat.rotationSpeed = rotationSpeed;
+     }
+ 
+-    // Update is called once per frame
++
+     void Update()
+     {
+-        //Spawn key
+-        if (spawnerTarget == null)
+-        {
+-            Debug.LogWarning("������Ŀ�����");
+-            return;
+-        }
++        SpawnerRote();
++    }
++
++<<<<<<< HEAD
++    public void SpawnNote()
++=======
++    void SpawnerRote()
++    {
+         // ������ת�Ƕ�(-˳ʱ��/+��ʱ��)
+-        angle -= speed * Time.deltaTime;
++        angle += rotationSpeed * Time.deltaTime;
+         // �����µ�λ��
+-        float x = spawnerTarget.position.x + Mathf.Cos(angle) * radius;
+-        float y = spawnerTarget.position.y + Mathf.Sin(angle) * radius;
++        float x = spawnerTarget.position.x + Mathf.Cos(angle * Mathf.Deg2Rad) * spawnerRadius;//Mathf.Cos �� Mathf.Sin �����Ǻ����� Unity ��ֻ���ܻ�������Ϊ������
++        float y = spawnerTarget.position.y + Mathf.Sin(angle * Mathf.Deg2Rad) * spawnerRadius;
+         // ���µ�ǰ�����λ��
+-        Spawner.transform.position = new Vector3(x, y, transform.position.z);
++        Spawner.position = new Vector3(x, y, transform.position.z);
+     }
+-
+-    public void SpawnNote()
++    private void SpawnNote()
++>>>>>>> origin/main
+     {
+         // ʵ�������Ԥ����
+-        GameObject note = Instantiate(notePrefab, spawnPoint.position, Quaternion.identity);
++        GameObject note = Instantiate(notePrefab, Spawner.position, Quaternion.identity);
+ 
+         // ��ȡ����Ŀ������ű������ò���
+         L2noteController noteController = note.GetComponent<L2noteController>();
+         if (noteController != null)
+         {
+             noteController.noteTarget = noteTarget;
+-            noteController.circleRadius = circleRadius;
+-            noteController.moveTime = moveTime;
++            noteController.circleRadius = accCircleRadius;
++            noteController.moveToAccTime = moveToAccTime;
++            noteController.targetPosition = cat.transform.position;
+         }
+         else
+         {

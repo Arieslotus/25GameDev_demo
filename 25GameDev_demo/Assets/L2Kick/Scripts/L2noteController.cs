@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class L2noteController : MonoBehaviour
@@ -22,8 +23,40 @@ public class L2noteController : MonoBehaviour
     Rigidbody2D rig;
     bool flag = true;
 
+    float myTime = 0;
+    [HideInInspector] public float checkRange;
+    [HideInInspector] public float perfectCheckRange;
+    bool hadAdd = false, hadRemove = false;
+
+    [Header("表现设置")]
+    public float rotationSpeed = 50f;
+    // 缩放速度
+    public float scaleSpeed = 0.5f;
+    // 缩放范围（最小和最大缩放比例）
+    public float minScale = 0.8f;
+    public float maxScale = 1.2f;
+    private Vector3 initialScale; // 初始缩放值
+    private float currentScaleFactor = 1f; // 当前缩放因子
+    private bool scalingUp = true; // 是否正在放大
+
+    private void Awake()
+    {
+        L2gameController gameController = FindObjectOfType<L2gameController>();
+        noteTarget = gameController.noteTarget;
+        circleRadius = gameController.accCircleRadius;
+        moveToAccTime = gameController.moveToAccTime;
+        targetPosition = gameController.cat.transform.position;
+        checkRange = gameController.checkTimeRange;
+        perfectCheckRange = gameController.perfectCheckTimeRange;
+    }
+
     void Start()
     {
+        //Debug.Log("checkrange" + checkRange);
+        initialScale = transform.localScale;
+
+        myTime = - FindObjectOfType<L2gameController>().moveToAccTime;
+        //Debug.Log("myTime" + myTime);
         if (noteTarget == null)
         {
             Debug.LogWarning("请设置目标对象！");
@@ -47,37 +80,63 @@ public class L2noteController : MonoBehaviour
 
     void Update()
     {
-        if(isMovingOutsideAcc)
+        myTime += Time.deltaTime;
+
+        RotateObject();
+        ScaleObject();
+
+        //Debug.Log("mytime" + myTime);
+        //进入判定区间
+        if (!hadAdd && myTime > -checkRange / 2)
+        {
+            this.gameObject.GetComponent<SpriteRenderer>().color = Color.green;
+            //Debug.Log("tap1");
+            L2CheckList.tapCheckList.Add(this);
+            hadAdd = true;
+        }
+        else if (!hadRemove && myTime > checkRange/2) //出判定区间
+        {
+            L2CheckList.tapCheckList.Remove(this);
+            hadRemove = true;
+            Miss();
+        }
+
+        if (isMovingOutsideAcc)
         {
             // 计算已经移动的时间
             float distanceCovered = (Time.time - startTime) * moveSpeed;
-
             // 计算当前移动的进度（0 到 1 之间）
             float fractionOfAccurateJourney = distanceCovered / accJourneyL;
 
-            // 使用 Lerp 平滑移动
-            transform.position = Vector3.Lerp(startPosition, accuratePosition, fractionOfAccurateJourney);
-
-            // 如果到达准确线内
-            if (fractionOfAccurateJourney >= 1f)
+            if (fractionOfAccurateJourney < 1f)
             {
+                transform.position = Vector3.Lerp(startPosition, accuratePosition, fractionOfAccurateJourney);
+            }
+            else
+            {
+                // 到达 accuratePosition，开始第二阶段
                 isMovingOutsideAcc = false;
+                //startTime = Time.time; // 重置开始时间
             }
         }
         else
         {
             // 计算已经移动的时间
             float distanceCovered = (Time.time - startTime) * moveSpeed;
-
             // 计算当前移动的进度（0 到 1 之间）
-            float fractionOfJourney = distanceCovered / journeyLength;
+            float fractionOfTargetJourney = distanceCovered / journeyLength;
 
-            // 使用 Lerp 平滑移动
-            transform.position = Vector3.Lerp(startPosition, targetPosition, fractionOfJourney);
+            if (fractionOfTargetJourney < 1f)
+            {
+                transform.position = Vector3.Lerp(startPosition, targetPosition, fractionOfTargetJourney);
+            }
+            else
+            {
+                transform.position = targetPosition;
+            }
         }
-        
-        
 
+       
     }
 
     // 计算生成点到目标点的连线与圆圈边线的交点
@@ -92,47 +151,61 @@ public class L2noteController : MonoBehaviour
         return intersectionPoint;
     }
 
-    // 在 Scene 视图中绘制圆圈（方便调试）
-    //private void OnDrawGizmosSelected()
-    //{
-    //    if (noteTarget != null)
-    //    {
-    //        Gizmos.color = Color.red;
-    //        Gizmos.DrawWireSphere(noteTarget.position, circleRadius);
-    //    }
-    //}
-
-    //玩家点按
-    private void OnTriggerEnter2D(Collider2D collision)
+    public bool CheckNote_Tap()
     {
-        Debug.Log(collision.tag);
-
-        if (collision.CompareTag("CatBody"))
-        {
-            //小球打到猫身体(踹)
-            Destroy(gameObject);
-            //Debug.Log("bump body");
-            //if (collision.GetComponent<SpriteRenderer>())
-            //{
-            //    collision.GetComponent<SpriteRenderer>().color = Color.red;
-            //}
-        }
-
-        if (collision.CompareTag("CatLeg"))
-        {
-            //小球打到猫腿（扫腿）
-            Destroy(gameObject);
-            Debug.Log("bump leg");
-        }
+        Debug.Log("tap");
+        FindObjectOfType<L2gameController>().JudgeNote(myTime);
+        L2CheckList.tapCheckList.Remove(this);
+        Destroy(gameObject);
+        return true;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    void Miss()
     {
-        if(collision.collider.tag == "CatFoot")
+        Debug.Log("miss");
+        //特效
+        //积分
+        FindObjectOfType<L2gameController>().MissNote();
+        L2CheckList.tapCheckList.Remove(this);
+        this.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+        Destroy(gameObject);
+    }
+
+    public void showCheckResult(int x)
+    {
+        //1perfect 2good 0miss
+
+    }
+
+    private void RotateObject()
+    {
+        // 绕 Z 轴旋转
+        transform.Rotate(0,0, rotationSpeed * Time.deltaTime);
+    }
+
+    private void ScaleObject()
+    {
+        // 计算缩放因子
+        if (scalingUp)
         {
-            //脚踢到小球（目前转速-200，不会出现玩家错过小球但仍然落在脚处的情况）
-            Destroy(gameObject);
-            //Debug.Log("bump foot");
+            currentScaleFactor += scaleSpeed * Time.deltaTime;
+            if (currentScaleFactor >= maxScale)
+            {
+                currentScaleFactor = maxScale;
+                scalingUp = false;
+            }
         }
+        else
+        {
+            currentScaleFactor -= scaleSpeed * Time.deltaTime;
+            if (currentScaleFactor <= minScale)
+            {
+                currentScaleFactor = minScale;
+                scalingUp = true;
+            }
+        }
+
+        // 应用缩放
+        transform.localScale = initialScale * currentScaleFactor;
     }
 }

@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 3075009600568419484}
   - component: {fileID: 7986355101821534344}
-  - component: {fileID: 132595185269729596}
   - component: {fileID: -8481138875205917462}
   - component: {fileID: 57556858548972000}
+  - component: {fileID: 8641867949727758708}
   m_Layer: 0
-  m_Name: key
+  m_Name: head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -923174710, guid: e86fa728c11c15041a91e6fc18077bd3, type: 3}
+  m_Sprite: {fileID: -1901239653, guid: e86fa728c11c15041a91e6fc18077bd3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -87,25 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &132595185269729596
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2348781513493368836}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdae063ea48366347805aca54bbde379, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  noteTarget: {fileID: 0}
-  circleRadius: 2
-  moveToAccTime: 0
-  targetPosition: {x: 0, y: 0, z: 0}
-  isMovingOutsideAcc: 1
-  checkRange: 0
-  perfectCheckRange: 0
 --- !u!70 &-8481138875205917462
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -168,3 +149,29 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &8641867949727758708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2348781513493368836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aff9aec494edb8f4e87af2489498a998, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  noteTarget: {fileID: 0}
+  circleRadius: 2
+  moveToAccTime: 0
+  targetPosition: {x: 0, y: 0, z: 0}
+  isMovingOutsideAcc: 1
+  checkRange: 0
+  perfectCheckRange: 0
+  rotationSpeed: 50
+  scaleSpeed: 0.5
+  minScale: 0.8
+  maxScale: 1.2
+  targetAlpha: 0.5
+  isFirst: 0
+  holdTime: 0
