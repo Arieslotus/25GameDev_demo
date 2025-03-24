@@ -20,7 +20,6 @@ public class L2ResultPage : MonoBehaviour
     //int bestCombo;
 
     public Image image_level;
-    public Sprite sprite_level_SS;
     public Sprite sprite_level_S;
     public Sprite sprite_level_A;
     public Sprite sprite_level_B;
@@ -40,7 +39,7 @@ public class L2ResultPage : MonoBehaviour
             if (score / controller.totalScore >= 1)
             {
                 myLevel = level.SS;
-                image_level.sprite = sprite_level_SS;
+                image_level.sprite = sprite_level_S;
             }
             else if (score / controller.totalScore >= 0.8)
             {

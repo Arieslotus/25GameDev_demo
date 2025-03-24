@@ -81,9 +81,11 @@ public class L2gameController : MonoBehaviour
     [Header("游戏结束")]
     public GameObject gamefailed;
     public GameObject gameCompleted;
+    public GameObject resultPage;
     public Image result;
-    public Sprite resultImage_Win;
-    public Sprite resultImage_Failed;
+    public Sprite S;
+    public Sprite A;
+    public Sprite B;
 
 
 
@@ -179,14 +181,14 @@ public class L2gameController : MonoBehaviour
         yield return new WaitForSeconds(2); // 等待延迟时间
 
         result.gameObject.SetActive(true);
-        if (isCompleted)
-        {
-            result.sprite = resultImage_Win;
-        }
-        else
-        {
-            result.sprite = resultImage_Failed;
-        }
+        //if (isCompleted)
+        //{
+        //    result.sprite = resultImage_Win;
+        //}
+        //else
+        //{
+        //    result.sprite = resultImage_Failed;
+        //}
     }
 
     IEnumerator GameStart()
