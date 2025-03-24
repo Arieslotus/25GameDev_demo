@@ -40,14 +40,15 @@ public class L2HoldController : MonoBehaviour
 
     //hold
     [HideInInspector]
-    public bool isFirst;
+    public bool isFirst = false;
     public float holdTime;
-    bool isHolding;
+    bool isHolding = false;
     float isHoldingTime;
     float hitTime;
     bool isFirstFrame = true;
-    bool isSpaceReleased = false; // 是否松开了空格
+    public bool isSpaceReleased = false; // 是否松开了空格
     private Coroutine holdingCoroutine; // 用于存储协程引用
+    bool hadSetAlpha = false;
     //holdrow
     //bool L2CheckList.headHadMiss = false;
 
@@ -62,8 +63,6 @@ public class L2HoldController : MonoBehaviour
         targetPosition = gameController.cat.transform.position;
         checkRange = gameController.checkTimeRange;
         perfectCheckRange = gameController.perfectCheckTimeRange;
-
-        
     }
 
     private void OnEnable()
@@ -104,7 +103,8 @@ public class L2HoldController : MonoBehaviour
         }
         else
         {
-            L2CheckList.headHadMiss = false;
+            //L2CheckList.headHadMiss = false;
+            //L2CheckList.isSpaceReleased = false;
         }
     }
 
@@ -116,78 +116,75 @@ public class L2HoldController : MonoBehaviour
         {
             RotateObject();
             ScaleObject();
+
+            //Debug.Log("mytime" + myTime);
         }
 
         //Debug.Log("mytime" + myTime);
         //进入判定区间
         
-        if (!hadAdd && myTime > -checkRange / 2)
+        if ( myTime > -checkRange / 2 && myTime < checkRange / 2)
         {
-            this.gameObject.GetComponent<SpriteRenderer>().color = Color.green;
-            //在原地停下
-            //if (isMovingOutsideAcc)
-            //{
-            //    targetPosition = accuratePosition;s
-            //}
-            //else
-            //{
-            //    targetPosition = transform.position;
-            //}
-            //Debug.Log("tap1");
-            if (isFirst)
+            //Debug.Log("进范围");
+            if (!hadAdd)//执行一次
             {
-                L2CheckList.headCheckList.Add(this);
-                L2CheckList.holdCheckList.Add(this);
-                hitTime = myTime;
+                this.gameObject.GetComponent<SpriteRenderer>().color = Color.green;
 
-                //
-                if (isHolding)
+                if (isFirst)
                 {
-                    if (isFirstFrame)
+                    L2CheckList.headCheckList.Add(this);
+                    hitTime = myTime;
+                }
+                else
+                {
+                    L2CheckList.holdRow.Add(this);
+                }
+                hadAdd = true;
+            }
+            else //循环
+            {
+                if (isFirst)
+                {
+                    if (Input.GetKeyUp(KeyCode.Space))
                     {
-                        // 第一帧检测是否按下空格
-                        if (Input.GetKey(KeyCode.Space))
-                        {
-                            isFirstFrame = false;
-                        }
-                        else
-                        {
-                            // 第一帧未按下空格，标记为未按下
-                            isSpaceReleased = true;
-                            isFirstFrame = false;
+                        // 中途松开空格，标记为松开
+                        isSpaceReleased = true;
+                        //L2CheckList.isSpaceReleased = true;
 
-                        }
                     }
-                    else
+                }
+                else
+                {
+                    if (L2CheckList.headHadMiss && !hadSetAlpha)
                     {
-                        // Hold 阶段检测是否松开空格
-                        if (!Input.GetKey(KeyCode.Space))
-                        {
-                            // 中途松开空格，标记为松开
-                            isSpaceReleased = true;
-                        }
+                        //淡出
+                        //Debug.Log("淡出");
+                        Color color = GetComponent<SpriteRenderer>().color;
+                        color.a = 0.1f;
+                        GetComponent<SpriteRenderer>().color = color;
+                        hadSetAlpha = true;
                     }
                 }
             }
-            else
-            {
-                L2CheckList.holdRow.Add(this);
-            }
-            hadAdd = true;
         }
-        else if (!hadRemove && myTime > checkRange / 2) //出判定区间
+        else if (myTime > checkRange / 2) //出判定区间,撞到猫
         {
-            if (isFirst)
+            //Debug.Log("出范围");
+            if (!hadRemove)
             {
-                L2CheckList.headCheckList.Remove(this);
-                Miss();
+                //Debug.Log("出范围");
+                if (isFirst)
+                {
+                    //Debug.Log("miss");
+                    Miss();
+                }
+                else
+                {
+                    L2CheckList.holdRow.Remove(this);
+                    Destroy(gameObject);
+                }
             }
-            else
-            {
-                L2CheckList.holdRow.Remove(this);
-                Destroy(gameObject);
-            }
-                hadRemove = true;
+            hadRemove = true;
         }
         
             //move
@@ -207,6 +204,18 @@ public class L2HoldController : MonoBehaviour
                 // 到达 accuratePosition，开始第二阶段
                 isMovingOutsideAcc = false;
                 //startTime = Time.time; // 重置开始时间
+
+                //玩家正常hold的destroy逻辑
+                if (!isFirst && !L2CheckList.headHadMiss && Input.GetKey(KeyCode.Space))
+                {
+                    if(L2CheckList.headCheckList.Count>0 && !L2CheckList.headCheckList[0].isSpaceReleased)
+                    {
+                        //Debug.Log("hold:destroy");
+                        L2CheckList.holdRow.Remove(this);
+                        Destroy(gameObject);
+                    }
+
+                }
             }
         }
         else
@@ -225,22 +234,6 @@ public class L2HoldController : MonoBehaviour
                 transform.position = targetPosition;
             }
         }
-
-
-        //if (!isFirst)
-        //{
-        //    if (L2CheckList.headHadMiss)
-        //    {
-        //        //淡出
-        //        Color color = GetComponent<SpriteRenderer>().color;
-        //        color.a = targetAlpha;
-        //        GetComponent<SpriteRenderer>().color = color;
-        //    }
-        //    if (L2CheckList.holdCheckList.Count == 0 && L2CheckList.headCheckList.Count == 0)
-        //    {
-        //        //Destroy(gameObject);
-        //    }
-        //}
     }
 
     // 计算生成点到目标点的连线与圆圈边线的交点
@@ -255,17 +248,18 @@ public class L2HoldController : MonoBehaviour
         return intersectionPoint;
     }
 
-    public bool CheckNote_Head()
+    public bool CheckNote_Head() //已经按下
     {
-        
         hadRemove = true;
-        L2CheckList.headCheckList.Remove(this);
-        L2CheckList.holdCheckList.Add(this);
         isHolding = true;
+        L2CheckList.headHadMiss = false;
+        //命中特效
+        Debug.Log("head淡出");
+        Color color = GetComponent<SpriteRenderer>().color;
+        color.a = 0f;
+        GetComponent<SpriteRenderer>().color = color;
+        //Debug.Log("L2CheckList.headHadMiss" + L2CheckList.headHadMiss);
         FindObjectOfType<L2gameController>().JudgeNote(hitTime); // 传入判定时间
-        //在原地停下
-        //targetPosition = accuratePosition;
-        //StartCoroutine(HoldingTimer());
         if (this != null ) // 检查对象是否被销毁!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!?????????????????????????
             holdingCoroutine = StartCoroutine(HoldingTimer());
         return true;
@@ -274,39 +268,6 @@ public class L2HoldController : MonoBehaviour
 
     IEnumerator HoldingTimer()
     {
-        //while (isHolding)
-        //{
-        //    isHoldingTime += Time.deltaTime;
-        //    isHolding = false;
-
-        //    if (isHoldingTime >= holdTime)
-        //    {
-        //        L2CheckList.headCheckList.Remove(this);
-        //        foreach(L2HoldController h in L2CheckList.holdRow)
-        //        {
-        //            Debug.Log("destroy");
-        //            Destroy(h.gameObject);
-        //        }
-        //        L2CheckList.holdRow.Clear();
-        //        FindObjectOfType<L2gameController>().JudgeNote(hitTime);
-        //        //特效&积分
-        //        Destroy(gameObject);
-        //        break;
-        //    }
-        //    yield return 0;
-        //}
-        //if (isHoldingTime < holdTime)
-        //{
-        //    Miss();
-        //}
-
-        // 等待 holdTime 时间
-        //yield return new WaitForSeconds(holdTime);
-        //if (this == null || gameObject == null) // 检查对象是否被销毁
-        //{
-        //    yield break; // 如果对象被销毁，停止协程
-        //}
-        // 等待 holdTime 时间
         float elapsedTime = 0f;
         while (elapsedTime < holdTime)
         {
@@ -330,9 +291,6 @@ public class L2HoldController : MonoBehaviour
         }
         else
         {
-            // 如果一直按住空格，加分并销毁物体
-            //FindObjectOfType<L2gameController>().AddScore(); // 加分
-            L2CheckList.holdCheckList.Remove(this); // 从 holdCheckList 中移除
             L2CheckList.headCheckList.Remove(this); // 从 holdCheckList 中移除
             Destroy(gameObject);
         }
@@ -340,30 +298,13 @@ public class L2HoldController : MonoBehaviour
 
     void Miss()
     {
-        //if (holdingCoroutine != null)
-        //{
-        //    StopCoroutine(holdingCoroutine); // 停止协程
-        //}
-        isHolding = false;
-        Debug.Log("miss");
+        L2CheckList.headHadMiss = true;
+        //Debug.Log("L2CheckList.headHadMiss" + L2CheckList.headHadMiss);
+        //Debug.Log("miss");
         //特效
         //积分
         FindObjectOfType<L2gameController>().MissNote();
         L2CheckList.headCheckList.Remove(this);
-        L2CheckList.holdCheckList.Remove(this);
-        this.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
-        //淡出
-        Color color = GetComponent<SpriteRenderer>().color;
-        color.a = targetAlpha;
-        GetComponent<SpriteRenderer>().color = color;
-        /*//其他全删掉
-        foreach (L2HoldController h in L2CheckList.holdRow)
-        {
-            Debug.Log("destroy");
-            Destroy(h.gameObject);
-        }*/
-        L2CheckList.holdRow.Clear();
-        //L2CheckList.headHadMiss = true;
         Destroy(gameObject);
     }
 
@@ -400,14 +341,9 @@ public class L2HoldController : MonoBehaviour
         transform.localScale = initialScale * currentScaleFactor;
     }
 
-    //void OnDestroy()
-    //{
-    //    if (holdingCoroutine != null)
-    //    {
-    //        StopCoroutine(holdingCoroutine);
-    //        holdingCoroutine = null;
-    //    }
-    //    L2CheckList.holdCheckList.Remove(this);
-    //    L2CheckList.headCheckList.Remove(this);
-    //}
+    void OnDestroy()
+    {
+        if (isFirst)
+            Debug.Log("firstDestroyed");
+    }
 }

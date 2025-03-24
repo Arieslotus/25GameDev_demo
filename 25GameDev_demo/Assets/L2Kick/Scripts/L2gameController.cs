@@ -86,6 +86,11 @@ public class L2gameController : MonoBehaviour
     public Sprite S;
     public Sprite A;
     public Sprite B;
+    [HideInInspector]
+    public int perfectNum;
+    public int goodNum;
+    public int missNum;
+    public int bestComboNum;
 
 
 
@@ -120,6 +125,8 @@ public class L2gameController : MonoBehaviour
         score = 0;
         health = 3;
         UI_combo.SetActive(false);
+
+        Debug.Log("musicPlayer.clip.length" + musicPlayer.clip.length);
     }
 
 
@@ -131,11 +138,11 @@ public class L2gameController : MonoBehaviour
         {
             if (myTime >= timeStamps[index])
             {
-                Debug.Log("noteType[index]" + noteType[index]);
+                //Debug.Log("noteType[index]" + noteType[index]);
                 //Instantiate(tap, Spawner.position, Quaternion.identity);
                 if (noteType[index] == 1)
                 {
-                    Debug.Log("Spawn Tap");
+                    //Debug.Log("Spawn Tap");
                     SpawnNote();
                 }
                 else if (noteType[index] == 2)
@@ -158,17 +165,21 @@ public class L2gameController : MonoBehaviour
             }
         }
 
-        if (health <= 0)
-        {
-            ////失败提示
-            //StartCoroutine(EndWithDelay(false));
-            //enabled = false; // 禁用 Update 检测
-        }
+        //if (health <= 0)
+        //{
+        //    ////失败提示
+        //    //StartCoroutine(EndWithDelay(false));
+        //    //enabled = false; // 禁用 Update 检测
+        //}
 
 
         //音乐播放完毕
-        if (musicPlayer.isPlaying && musicPlayer.time > musicPlayer.clip.length)
+        //if (!musicPlayer.isPlaying)
+            //Debug.Log("musicPlayer!IsPlaying");
+        //Debug.Log("musicPlayer.time" + musicPlayer.time);
+        if (musicPlayer.isPlaying && musicPlayer.time >= musicPlayer.clip.length-0.2)
         {
+            //musicPlayer.clip.length
             Debug.Log("music over");
             //成功提示
             StartCoroutine(EndWithDelay(true));
@@ -180,7 +191,7 @@ public class L2gameController : MonoBehaviour
     {
         yield return new WaitForSeconds(2); // 等待延迟时间
 
-        result.gameObject.SetActive(true);
+        resultPage.gameObject.SetActive(true);
         //if (isCompleted)
         //{
         //    result.sprite = resultImage_Win;
@@ -288,9 +299,11 @@ public class L2gameController : MonoBehaviour
     public void JudgeNote(float hitTime)
     {
         hitTime = System.Math.Abs(hitTime);
+        FindObjectOfType<L2CameraShake>().ShakeCamra();
         if (hitTime < perfectCheckTimeRange / 2) //perfect
         {
             score += scorePerPerfect;
+            perfectNum++;
             if (L2CheckList.graderList != null && L2CheckList.graderList.Count > 2)
             {
                 foreach (var grader in L2CheckList.graderList)
@@ -309,6 +322,7 @@ public class L2gameController : MonoBehaviour
         else
         {
             score += scorePerGood;
+            goodNum++;
             if (L2CheckList.graderList != null && L2CheckList.graderList.Count > 2)
             {
                 foreach (var grader in L2CheckList.graderList)
@@ -325,6 +339,10 @@ public class L2gameController : MonoBehaviour
             Instantiate(good,spawnPos);
         }
         combo++;
+        if (bestComboNum < combo)
+        {
+            bestComboNum = combo;
+        }
         if (combo > numToShowCombo)
         {
             UI_combo.SetActive(true);
@@ -337,6 +355,7 @@ public class L2gameController : MonoBehaviour
     {
         combo = 0;
         score += scorePerMiss;
+        missNum++;
         health--;
         if (UI_health.transform.childCount > 0)
         {
@@ -346,7 +365,7 @@ public class L2gameController : MonoBehaviour
             Destroy(firstChild.gameObject);
         }
         text_score.text = "" + score;
-        text_health.text = "health" + health;
+        text_health.text = "" + health;
         if (L2CheckList.graderList != null && L2CheckList.graderList.Count > 2)
         {
             foreach (var grader in L2CheckList.graderList)
@@ -363,4 +382,5 @@ public class L2gameController : MonoBehaviour
         Instantiate(miss,spawnPos);
         UI_combo.SetActive(false);
     }
+
 }

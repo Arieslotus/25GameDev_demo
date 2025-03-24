@@ -37,7 +37,7 @@ Shader "L2/Glitch" {
                 //将点乘结果传入正弦函数中，以增加随机性
                 //frac用于获取浮点数的小数部分的函数 中间乘以一个很大的无规律的数再加上偏移量用于调整随机数的范围
                 //将结果取余1.0，确保随机数在[0, 1)范围内
-                return (frac(sin(dot(seed * floor(50 + (_Time % 1.0) * 12), half2(127.1, 311.7))) * 43758.5453123) + offset) % 1.0;
+                return (frac(sin(dot(seed * floor(50 + (_Time % 1.0) * 6), half2(127.1, 311.7))) * 43758.5453123) + offset) % 1.0;
             }
 
             v2f vert(appdata v) {

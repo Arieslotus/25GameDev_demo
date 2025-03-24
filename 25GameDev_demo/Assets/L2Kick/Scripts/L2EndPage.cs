@@ -60,6 +60,10 @@ public class L2EndPage : MonoBehaviour
         score = controller.score;
         //text_bestCombo.text = "best combo " + bestCombo;
         text_score.text = "" + score;
+        text_bestCombo.text = "" + controller.bestComboNum;
+        text_perfect.text = "" + controller.perfectNum;
+        text_good.text = "" + controller.goodNum;
+        text_miss.text = "" + controller.missNum;
         if (controller.health > 0)
         {
             if (score / controller.totalScore >= 1)
@@ -130,10 +134,13 @@ public class L2EndPage : MonoBehaviour
 
     public void OnClickRestartButton()
     {
-        SceneManager.LoadScene("L2SKick");
+        L2CheckList.ResetCheckList();
+        SceneManager.LoadScene("L2Kick");
+
     }
     public void OnClickBackButton()
     {
+        L2CheckList.ResetCheckList();
         SceneManager.LoadScene("L2Start");
     }
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 
 
@@ -24,6 +25,13 @@ public class CatController : MonoBehaviour
     bool isCalculatingSpaceTime = false;
 
 
+    //
+    public float duration = 0.3f; // 振动持续时间
+    public float strength = 0.2f; // 变形强度
+
+    private Vector3 originalScale;
+
+
     public enum KickType
     {
         Tap,
@@ -42,6 +50,8 @@ public class CatController : MonoBehaviour
         public bool isRetracting;//正在收脚
 
         public KickType currentKickType;
+
+        
 
     }
     Foot footR, footL;
@@ -101,7 +111,8 @@ public class CatController : MonoBehaviour
             trailL2.GetComponent<TrailRenderer>().enabled = false;
             trailL2.GetComponent<TrailRenderer>().emitting = false;
 
-        
+        //dot
+        originalScale = transform.localScale; // 记录初始大小
     }
 
     void Update()
@@ -138,6 +149,9 @@ public class CatController : MonoBehaviour
 
                 currentControlFoot.currentKickType = KickType.Tap;//先假设是tap
             }
+
+            //dot
+            DoJellyEffect();
 
         }
 
@@ -362,6 +376,18 @@ public class CatController : MonoBehaviour
             }
         }
 
+    }
+
+    void DoJellyEffect()
+    {
+        transform.DOKill(); // 先清除之前的动画，避免冲突
+
+        transform.DOScale(new Vector3(originalScale.x * (1 + strength), originalScale.y * (1 - strength), originalScale.z), duration / 2)
+            .SetEase(Ease.OutQuad) // 先放大一点
+            .OnComplete(() =>
+            {
+                transform.DOScale(originalScale, duration / 2).SetEase(Ease.OutBounce); // 然后回弹
+            });
     }
 
 

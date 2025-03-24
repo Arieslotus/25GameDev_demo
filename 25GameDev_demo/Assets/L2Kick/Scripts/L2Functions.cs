@@ -78,12 +78,14 @@ public class L2Functions : MonoBehaviour
     public void ReturnToMainMenu()
     {
         Time.timeScale = 1f; // 恢复游戏时间
+        L2CheckList.ResetCheckList();
         SceneManager.LoadScene(mainMenuSceneName); // 加载主菜单场景
     }
 
     public void Reload()
     {
         Time.timeScale = 1f; // 恢复游戏时间
+        L2CheckList.ResetCheckList();
         SceneManager.LoadScene(reloadScene); // 加载主菜单场景
     }
 

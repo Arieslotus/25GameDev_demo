@@ -153,7 +153,7 @@ public class L2noteController : MonoBehaviour
 
     public bool CheckNote_Tap()
     {
-        Debug.Log("tap");
+        //Debug.Log("tap");
         FindObjectOfType<L2gameController>().JudgeNote(myTime);
         L2CheckList.tapCheckList.Remove(this);
         Destroy(gameObject);
@@ -162,7 +162,7 @@ public class L2noteController : MonoBehaviour
 
     void Miss()
     {
-        Debug.Log("miss");
+        //Debug.Log("miss");
         //特效
         //积分
         FindObjectOfType<L2gameController>().MissNote();
