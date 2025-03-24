@@ -25,12 +25,23 @@ public class CatController : MonoBehaviour
     bool isCalculatingSpaceTime = false;
 
 
-    //
+    //dot
+    [Header("dotween")]
     public float duration = 0.3f; // 振动持续时间
     public float strength = 0.2f; // 变形强度
 
     private Vector3 originalScale;
 
+    [Header("miss")]
+    public SpriteRenderer body_spriteRenderer;
+    public Material newMaterial; // 要切换的材质
+    private Material bodyOriginalMaterial; // 存储原始材质
+    public float materialChangeDuration = 0.2f; // 材质更换持续时间
+
+    public SpriteRenderer face_spriteRenderer;
+    public Sprite normal, kick, miss;
+    private Sprite faceOriginalSprite;
+    bool isMissing = false;
 
     public enum KickType
     {
@@ -56,6 +67,11 @@ public class CatController : MonoBehaviour
     }
     Foot footR, footL;
     Foot currentControlFoot;
+    [HideInInspector]
+    public bool isOutRFoot,isOutLFoot;
+
+    public GameObject perfectHoldL,perfectHoldR;
+    public ParticleSystem[] perfectHoldEffect;
 
 
 
@@ -113,12 +129,28 @@ public class CatController : MonoBehaviour
 
         //dot
         originalScale = transform.localScale; // 记录初始大小
+
+        //miss fx
+
+        if (body_spriteRenderer != null)
+        {
+            bodyOriginalMaterial = body_spriteRenderer.material; // 记录原始材质
+        }
+        if (face_spriteRenderer != null)
+        {
+            faceOriginalSprite = face_spriteRenderer.sprite; // 记录原始材质
+        }
+
     }
 
     void Update()
     {
         // 旋转
         transform.Rotate(0, 0, rotationSpeed * Time.deltaTime);
+
+        //bool
+        isOutLFoot = footL.isExtended && footL.currentKickType == KickType.Hold;
+        isOutRFoot = footR.isExtended && footR.currentKickType == KickType.Hold;
 
 
         // 按下空格键触发踢脚动画
@@ -185,6 +217,20 @@ public class CatController : MonoBehaviour
 
                     trailR2.GetComponent<TrailRenderer>().enabled = true;
                     trailR2.GetComponent<TrailRenderer>().emitting = true;
+                    if(L2CheckList.headCheckList.Count > 0)
+                    {
+                        if (L2CheckList.headCheckList[0].myFootStatus == footStatus.perfect)
+                        {
+                            //perfect
+                            Debug.Log("footStatus.perfect");
+                            perfectHoldR.SetActive(true);
+                            //PlayPerfectEffect(perfectHoldR);
+                        }
+                        if (L2CheckList.headCheckList[0].myFootStatus == footStatus.good)
+                        {
+                            //good
+                        }
+                    }
 
                 }
                 else if (currentControlFoot.Id == 1)
@@ -195,12 +241,30 @@ public class CatController : MonoBehaviour
 
                     trailL2.GetComponent<TrailRenderer>().enabled = true;
                     trailL2.GetComponent<TrailRenderer>().emitting = true;
+
+                    if (L2CheckList.headCheckList.Count > 0)
+                    {
+                        if (L2CheckList.headCheckList[0].myFootStatus == footStatus.perfect)
+                        {
+                            //perfect
+                            Debug.Log("footStatus.perfect");
+                            perfectHoldL.SetActive(true);
+                            //PlayPerfectEffect(perfectHoldL);
+                        }
+                        if (L2CheckList.headCheckList[0].myFootStatus == footStatus.good)
+                        {
+                            //good
+                        }
+                    }
                 }
 
             }
             else { 
                 // tap
             }
+
+            //cat face
+            face_spriteRenderer.sprite = kick;
 
 
             return; // 如果已经伸出并按住空格，则不执行收回逻辑
@@ -216,7 +280,20 @@ public class CatController : MonoBehaviour
                 trailR2.GetComponent<TrailRenderer>().emitting = false;
                 trailR2.GetComponent<TrailRenderer>().enabled = false;
 
-
+                perfectHoldL.SetActive(false);
+                if (L2CheckList.headCheckList.Count > 0)
+                {
+                    if (L2CheckList.headCheckList[0].myFootStatus == footStatus.none)
+                    {
+                        //stop
+                        perfectHoldR.SetActive(false);
+                    }
+                }
+                else
+                {
+                    //stop
+                    perfectHoldR.SetActive(false);
+                }
 
             }
             else if (currentControlFoot.Id == 1)
@@ -226,7 +303,29 @@ public class CatController : MonoBehaviour
                 trailL2.GetComponent<TrailRenderer>().enabled = false;
                 trailL2.GetComponent<TrailRenderer>().emitting = false;
 
+                perfectHoldL.SetActive(false);
+                if (L2CheckList.headCheckList.Count > 0)
+                {
+                    if (L2CheckList.headCheckList[0].myFootStatus == footStatus.none)
+                    {
+                        //stop
+                        perfectHoldL.SetActive(false);
+                    }
+                }
+                else
+                {
+                    //stop
+                    perfectHoldL.SetActive(false);
+                }
             }
+
+            //cat face
+            if(!isMissing)
+            {
+                face_spriteRenderer.sprite = normal;
+            }
+
+            
         }
 
 
@@ -390,6 +489,39 @@ public class CatController : MonoBehaviour
             });
     }
 
+    //used in note cotroller
+    public void MissEffect()
+    {
+        DoJellyEffect();
+        if (newMaterial != null)
+        {
+            StartCoroutine(ChangeMaterialTemporarily());
+        }
+    }
 
+    IEnumerator ChangeMaterialTemporarily()
+    {
+        if (body_spriteRenderer != null)
+        {
+            body_spriteRenderer.sharedMaterial = newMaterial; // 更换材质
+            face_spriteRenderer.sprite = miss;
+            isMissing = true;
+            yield return new WaitForSeconds(materialChangeDuration); // 等待
+            body_spriteRenderer.sharedMaterial = bodyOriginalMaterial; // 恢复原材质
+            face_spriteRenderer.sprite = faceOriginalSprite;
+            isMissing = false;
+        }
+    }
+
+    //void PlayPerfectEffect(GameObject eff)
+    //{
+    //    Debug.Log("ins hold effect");
+    //    perfectHoldEffect = eff.GetComponentsInChildren<ParticleSystem>();
+    //    foreach (ParticleSystem ps in perfectHoldEffect)
+    //    {
+    //        ps.Play();
+    //    }
+    //    //Destroy(smoke, 2f);
+    //}
 
 }

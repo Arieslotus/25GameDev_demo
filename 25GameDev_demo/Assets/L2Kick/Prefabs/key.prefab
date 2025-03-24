@@ -56,7 +56,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 2b3ea6968a2d7264a960f15e1f62affc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -111,6 +111,12 @@ MonoBehaviour:
   scaleSpeed: 0.5
   minScale: 0.8
   maxScale: 1.2
+  perfectTapPre: {fileID: 2373347007103370708, guid: ff18054e50a43a3479ec7b1418a11b2f, type: 3}
+  goodTapPre: {fileID: 3430145131100528920, guid: ad5f2cd4face0c14abde4c43137e013d, type: 3}
+  smokePre: {fileID: 6785077793093284062, guid: f9a1a71ca4a43384dbb283ad0430241c, type: 3}
+  perfectTapEffect: []
+  goodTapEffect: []
+  smokeEffect: []
 --- !u!70 &-8481138875205917462
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

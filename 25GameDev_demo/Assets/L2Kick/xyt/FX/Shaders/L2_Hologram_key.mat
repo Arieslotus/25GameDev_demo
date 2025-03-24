@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: L2_TikTok
-  m_Shader: {fileID: 4800000, guid: c53fcd20562f5c145b6264ca9346f8b4, type: 3}
+  m_Name: L2_Hologram_key
+  m_Shader: {fileID: 4800000, guid: 36242c812b67058478842fef6a6c34a7, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -16,7 +16,7 @@ Material:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 3000
   stringTagMap: {}
   disabledShaderPasses: []
   m_LockedProperties: 
@@ -24,12 +24,16 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: a2dcb1ff8e6341943a10210d1b94d824, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _TikTokAlpha: 1
-    - _TikTokAmount: 0
-    m_Colors: []
+    - _HologramBlend: 1
+    - _HologramMaxAlpha: 0.306
+    - _HologramMinAlpha: 1
+    - _HologramStripesAmount: 0.423
+    - _HologramStripesSpeed: 14.4
+    m_Colors:
+    - _HologramStripeColor: {r: 0.18823528, g: 0, b: 1, a: 1}
   m_BuildTextureStacks: []

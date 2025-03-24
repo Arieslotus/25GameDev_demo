@@ -127,12 +127,12 @@ public class CatController_mouseControl : MonoBehaviour
         {
             currentSpaceTime += Time.deltaTime;
 
-            Debug.LogError($"current{currentSpaceTime} jude{judgeSpaceTime}");
+            //Debug.LogError($"current{currentSpaceTime} jude{judgeSpaceTime}");
 
             if (currentSpaceTime >= judgeSpaceTime)
             {
                 //Debug.LogError($"{currentControlFoot.Id} holding fx");
-                Debug.LogError("...");
+                //Debug.LogError("...");
                 currentControlFoot.isExtended = true;
                 currentControlFoot.currentKickType = KickType.Hold;
             }
@@ -172,7 +172,7 @@ public class CatController_mouseControl : MonoBehaviour
         // 长按保持伸出
         if (Input.GetKey(KeyCode.Space) && currentControlFoot.isExtended && currentControlFoot.currentKickType == KickType.Hold)
         {
-            Debug.LogError ($"foot{currentControlFoot.Id} is extended, fx , tyep{currentControlFoot.currentKickType}");
+            //Debug.LogError ($"foot{currentControlFoot.Id} is extended, fx , tyep{currentControlFoot.currentKickType}");
             //fx
             if (currentControlFoot.Id == 2)
             {

@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: L2_TikTok
-  m_Shader: {fileID: 4800000, guid: c53fcd20562f5c145b6264ca9346f8b4, type: 3}
+  m_Name: L2_ColorSwap
+  m_Shader: {fileID: 4800000, guid: 1b41bccdf75863b429388c5978662346, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -23,13 +23,22 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _ColorSwapTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _TikTokAlpha: 1
-    - _TikTokAmount: 0
-    m_Colors: []
+    - _ColorSwapBlend: 1
+    - _ColorSwapBlueLuminosity: -1
+    - _ColorSwapGreenLuminosity: 0.502
+    - _ColorSwapRedLuminosity: 0.385
+    m_Colors:
+    - _ColorSwapBlue: {r: 0, g: 0.58472157, b: 1, a: 1}
+    - _ColorSwapGreen: {r: 0, g: 0, b: 0, a: 1}
+    - _ColorSwapRed: {r: 0.98225087, g: 0.12743773, b: 0.90466136, a: 1}
   m_BuildTextureStacks: []

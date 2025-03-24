@@ -50,6 +50,7 @@ public class L2gameController : MonoBehaviour
     private int index = 0;
 
     [Header("»ý·Ö")]
+    public int healthMax = 5;
     [HideInInspector] public int health;
     [HideInInspector] public int score;
     [HideInInspector] public int combo;
@@ -123,7 +124,7 @@ public class L2gameController : MonoBehaviour
         //cat
         cat.rotationSpeed = rotationSpeed;
         score = 0;
-        health = 3;
+        health = healthMax;
         UI_combo.SetActive(false);
 
         Debug.Log("musicPlayer.clip.length" + musicPlayer.clip.length);

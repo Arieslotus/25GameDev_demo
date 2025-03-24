@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: L2_TikTok
-  m_Shader: {fileID: 4800000, guid: c53fcd20562f5c145b6264ca9346f8b4, type: 3}
+  m_Name: L2_HueShift
+  m_Shader: {fileID: 4800000, guid: 38866914c59334d428c5cd0e6e84375c, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -29,7 +29,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _TikTokAlpha: 1
-    - _TikTokAmount: 0
+    - _HsvBright: 1.006
+    - _HsvSaturation: 2
+    - _HsvShift: 30
     m_Colors: []
   m_BuildTextureStacks: []

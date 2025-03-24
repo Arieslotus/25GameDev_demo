@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8541240453892391829}
   - component: {fileID: 7796560657021530552}
   m_Layer: 0
-  m_Name: hold
+  m_Name: hold 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalScale: {x: 3.5, y: 3.5, z: 3.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -56,7 +56,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: f519cf48c904ca14abb267d84be6597b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -77,8 +77,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1679997282, guid: e86fa728c11c15041a91e6fc18077bd3, type: 3}
-  m_Color: {r: 0.85877097, g: 0.58805025, b: 1, a: 1}
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -183,8 +183,7 @@ MonoBehaviour:
   perfectHoldEffect: []
   goodHoldEffect: []
   smokeEffect: []
-  catRFoot: {fileID: 0}
-  catLFoot: {fileID: 0}
+  myFootStatus: 0
 --- !u!114 &7796560657021530552
 MonoBehaviour:
   m_ObjectHideFlags: 0

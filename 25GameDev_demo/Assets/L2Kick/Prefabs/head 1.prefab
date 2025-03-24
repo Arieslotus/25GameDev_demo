@@ -11,11 +11,10 @@ GameObject:
   - component: {fileID: 3075009600568419484}
   - component: {fileID: 7986355101821534344}
   - component: {fileID: -8481138875205917462}
-  - component: {fileID: 57556858548972000}
-  - component: {fileID: 8541240453892391829}
-  - component: {fileID: 7796560657021530552}
+  - component: {fileID: 8641867949727758708}
+  - component: {fileID: -1975195227939918445}
   m_Layer: 0
-  m_Name: hold
+  m_Name: head 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 2348781513493368836}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalPosition: {x: -1.5073975, y: -2.3920543, z: 0}
+  m_LocalScale: {x: 3.5, y: 3.5, z: 3.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -56,7 +55,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: dc824cf9470e25a4fad72999cba60988, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -77,8 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1679997282, guid: e86fa728c11c15041a91e6fc18077bd3, type: 3}
-  m_Color: {r: 0.85877097, g: 0.58805025, b: 1, a: 1}
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Color: {r: 0.49860236, g: 0.059748232, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -123,34 +122,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 1}
   m_Direction: 0
---- !u!50 &57556858548972000
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2348781513493368836}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 0.1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 6200000, guid: 0f39f7c51f783f14d80c48c6eff7c009, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!114 &8541240453892391829
+--- !u!114 &8641867949727758708
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -183,9 +155,8 @@ MonoBehaviour:
   perfectHoldEffect: []
   goodHoldEffect: []
   smokeEffect: []
-  catRFoot: {fileID: 0}
-  catLFoot: {fileID: 0}
---- !u!114 &7796560657021530552
+  myFootStatus: 0
+--- !u!114 &-1975195227939918445
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -205,13 +176,13 @@ MonoBehaviour:
   m_SelfShadows: 0
   m_ApplyToSortingLayers: 000000002d832752b3d5d8f2
   m_ShapePath:
-  - {x: -0.55999994, y: -0.5549998, z: 0}
-  - {x: -0.55999994, y: 0.55500007, z: 0}
-  - {x: 0.56000006, y: 0.55500007, z: 0}
-  - {x: 0.56000006, y: -0.5549998, z: 0}
+  - {x: -0.5549998, y: -0.54999995, z: 0}
+  - {x: -0.5549998, y: 0.54999995, z: 0}
+  - {x: 0.55500007, y: 0.54999995, z: 0}
+  - {x: 0.55500007, y: -0.54999995, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1276
+  m_InstanceId: -1285986
   m_LocalBounds:
-    m_Center: {x: 0.000000059604645, y: 0.00000011920929, z: 0}
-    m_Extent: {x: 0.56, y: 0.55499995, z: 0}
+    m_Center: {x: 0.00000011920929, y: 0, z: 0}
+    m_Extent: {x: 0.55499995, y: 0.54999995, z: 0}

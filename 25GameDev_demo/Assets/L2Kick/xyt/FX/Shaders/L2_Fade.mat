@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: L2_TikTok
-  m_Shader: {fileID: 4800000, guid: c53fcd20562f5c145b6264ca9346f8b4, type: 3}
+  m_Name: L2_Fade
+  m_Shader: {fileID: 4800000, guid: 5f3dce9b82e83dd4ca975a9c48a1a987, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -23,13 +23,18 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _FadeTex:
+        m_Texture: {fileID: 2800000, guid: e87d09ec30fd80247b01b96fa0d45461, type: 3}
+        m_Scale: {x: 8.96, y: 1}
+        m_Offset: {x: 18.23, y: 10.76}
     - _MainTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _TikTokAlpha: 1
-    - _TikTokAmount: 0
-    m_Colors: []
+    - _FadeAmount: 1
+    - _FadeBurnWidth: 0.605
+    m_Colors:
+    - _FadeColor: {r: 1, g: 1, b: 0, a: 1}
   m_BuildTextureStacks: []

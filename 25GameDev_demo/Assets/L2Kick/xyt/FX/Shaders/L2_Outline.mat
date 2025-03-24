@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: L2_TikTok
-  m_Shader: {fileID: 4800000, guid: c53fcd20562f5c145b6264ca9346f8b4, type: 3}
+  m_Name: L2_Outline
+  m_Shader: {fileID: 4800000, guid: 1970d79e7f54f08499fab4cdc6c6b8d4, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -27,9 +27,17 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _OutlineDistortTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _TikTokAlpha: 1
-    - _TikTokAmount: 0
-    m_Colors: []
+    - _OutlineAlpha: 1
+    - _OutlineDistortAmount: 0.975
+    - _OutlineDistortTexXSpeed: -4.2
+    - _OutlineDistortTexYSpeed: -6.8
+    - _OutlinePixelWidth: -5.91
+    m_Colors:
+    - _OutlineColor: {r: 1, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []

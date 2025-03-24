@@ -39,6 +39,17 @@ public class L2noteController : MonoBehaviour
     private float currentScaleFactor = 1f; // 当前缩放因子
     private bool scalingUp = true; // 是否正在放大
 
+    [Header("特效")]
+    public GameObject perfectTapPre;
+    public GameObject goodTapPre;
+    public GameObject smokePre;
+    GameObject perfectTap;
+    GameObject goodTap;
+    GameObject smoke;
+    public ParticleSystem[] perfectTapEffect;
+    public ParticleSystem[] goodTapEffect;
+    public ParticleSystem[] smokeEffect;
+
     private void Awake()
     {
         L2gameController gameController = FindObjectOfType<L2gameController>();
@@ -52,6 +63,12 @@ public class L2noteController : MonoBehaviour
 
     void Start()
     {
+        
+
+        
+        //goodTapEffect = goodTap.GetComponentsInChildren<ParticleSystem>();
+
+
         //Debug.Log("checkrange" + checkRange);
         initialScale = transform.localScale;
 
@@ -156,6 +173,9 @@ public class L2noteController : MonoBehaviour
         //Debug.Log("tap");
         FindObjectOfType<L2gameController>().JudgeNote(myTime);
         L2CheckList.tapCheckList.Remove(this);
+        //effect
+        PLayPerfectEffect();
+
         Destroy(gameObject);
         return true;
     }
@@ -169,6 +189,9 @@ public class L2noteController : MonoBehaviour
         L2CheckList.tapCheckList.Remove(this);
         this.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
         Destroy(gameObject);
+
+        //cat anima
+        FindObjectOfType<CatController>().MissEffect();
     }
 
     public void showCheckResult(int x)
@@ -207,5 +230,23 @@ public class L2noteController : MonoBehaviour
 
         // 应用缩放
         transform.localScale = initialScale * currentScaleFactor;
+    }
+
+    void PLayPerfectEffect()
+    {
+        perfectTap = Instantiate(perfectTapPre, transform.position, Quaternion.identity);
+        perfectTapEffect = perfectTap.GetComponentsInChildren<ParticleSystem>();
+        smoke = Instantiate(smokePre, transform.position, Quaternion.identity);
+        smokeEffect = smoke.GetComponentsInChildren<ParticleSystem>();
+        foreach (ParticleSystem ps in smokeEffect)
+        {
+            ps.Play();
+        }
+        foreach (ParticleSystem ps in perfectTapEffect)
+        {
+            ps.Play();
+        }
+        //Destroy(perfectTap,2f);
+        //Destroy(smoke,2f);
     }
 }

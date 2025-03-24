@@ -1,7 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UIElements;
+public enum footStatus
+{
+    perfect,
+    good,
+    none
+}
 public class L2HoldController : MonoBehaviour
 {
     [Header("目标设置")]
@@ -52,6 +58,21 @@ public class L2HoldController : MonoBehaviour
     //holdrow
     //bool L2CheckList.headHadMiss = false;
 
+    [Header("特效")]
+    public GameObject perfectHoldPre;
+    public GameObject goodHoldPre;
+    public GameObject smokePre;
+    GameObject perfectHold;
+    GameObject goodHold;
+    GameObject smoke;
+    public ParticleSystem[] perfectHoldEffect;
+    public ParticleSystem[] goodHoldEffect;
+    public ParticleSystem[] smokeEffect;
+    private GameObject catRFoot, catLFoot;
+
+
+    public footStatus myFootStatus;
+
 
     private void Awake()
     {
@@ -72,6 +93,14 @@ public class L2HoldController : MonoBehaviour
 
     void Start()
     {
+        //foot
+        catRFoot = GameObject.Find("footRSprite");
+        catLFoot = GameObject.Find("footLSprite");
+        myFootStatus = footStatus.none;
+
+        //goodHoldEffect= goodHold.GetComponentsInChildren<ParticleSystem>();
+
+
         //Debug.Log("checkrange" + checkRange);
         initialScale = transform.localScale;
 
@@ -112,6 +141,23 @@ public class L2HoldController : MonoBehaviour
     {
         myTime += Time.deltaTime;
 
+        //effect pos
+        if (isFirst)
+        {
+            var cat = FindObjectOfType<CatController>();
+            Vector3 footpos = Vector3.zero;
+            if (cat.isOutLFoot)
+            {
+                footpos = catLFoot.GetComponent<Transform>().position;
+            }
+            else if (cat.isOutRFoot)
+            {
+                footpos = catRFoot.GetComponent<Transform>().position;
+            }
+
+           // EffectsAtPosition(footpos);
+        }
+
         if (isFirst)
         {
             RotateObject();
@@ -149,6 +195,7 @@ public class L2HoldController : MonoBehaviour
                     {
                         // 中途松开空格，标记为松开
                         isSpaceReleased = true;
+                        myFootStatus = footStatus.none;
                         //L2CheckList.isSpaceReleased = true;
 
                     }
@@ -159,6 +206,7 @@ public class L2HoldController : MonoBehaviour
                     {
                         //淡出
                         //Debug.Log("淡出");
+                        StopPerfectEffect();
                         Color color = GetComponent<SpriteRenderer>().color;
                         color.a = 0.1f;
                         GetComponent<SpriteRenderer>().color = color;
@@ -253,12 +301,9 @@ public class L2HoldController : MonoBehaviour
         hadRemove = true;
         isHolding = true;
         L2CheckList.headHadMiss = false;
+        myFootStatus = footStatus.perfect;
         //命中特效
-        Debug.Log("head淡出");
-        Color color = GetComponent<SpriteRenderer>().color;
-        color.a = 0f;
-        GetComponent<SpriteRenderer>().color = color;
-        //Debug.Log("L2CheckList.headHadMiss" + L2CheckList.headHadMiss);
+        //PlayPerfectEffect();
         FindObjectOfType<L2gameController>().JudgeNote(hitTime); // 传入判定时间
         if (this != null ) // 检查对象是否被销毁!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!?????????????????????????
             holdingCoroutine = StartCoroutine(HoldingTimer());
@@ -291,6 +336,9 @@ public class L2HoldController : MonoBehaviour
         }
         else
         {
+            Debug.Log("finish+stop effect");
+            myFootStatus = footStatus.none;
+            StopPerfectEffect();
             L2CheckList.headCheckList.Remove(this); // 从 holdCheckList 中移除
             Destroy(gameObject);
         }
@@ -303,6 +351,8 @@ public class L2HoldController : MonoBehaviour
         //Debug.Log("miss");
         //特效
         //积分
+        myFootStatus = footStatus.none;
+        //StopPerfectEffect();
         FindObjectOfType<L2gameController>().MissNote();
         L2CheckList.headCheckList.Remove(this);
         Destroy(gameObject);
@@ -345,5 +395,45 @@ public class L2HoldController : MonoBehaviour
     {
         if (isFirst)
             Debug.Log("firstDestroyed");
+    }
+
+    void PlayPerfectEffect()
+    {
+        Debug.Log("ins hold effect");
+        perfectHold = Instantiate(perfectHoldPre, transform.position, Quaternion.identity);
+        perfectHoldEffect = perfectHold.GetComponentsInChildren<ParticleSystem>();
+        smoke = Instantiate(smokePre, transform.position, Quaternion.identity);
+        smokeEffect = smoke.GetComponentsInChildren<ParticleSystem>();
+        foreach (ParticleSystem ps in smokeEffect)
+        {
+            ps.Play();
+        }
+        foreach (ParticleSystem ps in perfectHoldEffect)
+        {
+            ps.Play();
+        }
+        //Destroy(smoke, 2f);
+    }
+
+    void StopPerfectEffect()
+    {
+        Debug.Log("stop effect");
+        foreach (ParticleSystem ps in perfectHoldEffect)
+        {
+            ps.Stop();
+        }
+        Destroy(perfectHold);
+    }
+
+    void EffectsAtPosition(Vector3 position)
+    {
+        if (perfectHold != null)
+        {
+            foreach (ParticleSystem ps in perfectHoldEffect)
+            {
+                // 设置粒子系统位置
+                ps.transform.position = position;
+            }
+        }
     }
 }
