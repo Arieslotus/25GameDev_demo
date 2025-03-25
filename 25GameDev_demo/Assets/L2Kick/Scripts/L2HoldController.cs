@@ -303,7 +303,8 @@ public class L2HoldController : MonoBehaviour
         L2CheckList.headHadMiss = false;
         myFootStatus = footStatus.perfect;
         //命中特效
-        //PlayPerfectEffect();
+        PlayPerfectEffect();
+
         FindObjectOfType<L2gameController>().JudgeNote(hitTime); // 传入判定时间
         if (this != null ) // 检查对象是否被销毁!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!?????????????????????????
             holdingCoroutine = StartCoroutine(HoldingTimer());
@@ -399,20 +400,21 @@ public class L2HoldController : MonoBehaviour
 
     void PlayPerfectEffect()
     {
-        Debug.Log("ins hold effect");
-        perfectHold = Instantiate(perfectHoldPre, transform.position, Quaternion.identity);
-        perfectHoldEffect = perfectHold.GetComponentsInChildren<ParticleSystem>();
-        smoke = Instantiate(smokePre, transform.position, Quaternion.identity);
-        smokeEffect = smoke.GetComponentsInChildren<ParticleSystem>();
-        foreach (ParticleSystem ps in smokeEffect)
-        {
-            ps.Play();
-        }
-        foreach (ParticleSystem ps in perfectHoldEffect)
-        {
-            ps.Play();
-        }
-        //Destroy(smoke, 2f);
+        //Debug.Log("ins hold effect");
+        //perfectHold = Instantiate(perfectHoldPre, transform.position, Quaternion.identity);
+        //perfectHoldEffect = perfectHold.GetComponentsInChildren<ParticleSystem>();
+        //smoke = Instantiate(smokePre, transform.position, Quaternion.identity);
+        //smokeEffect = smoke.GetComponentsInChildren<ParticleSystem>();
+        //foreach (ParticleSystem ps in smokeEffect)
+        //{
+        //    ps.Play();
+        //}
+        //foreach (ParticleSystem ps in perfectHoldEffect)
+        //{
+        //    ps.Play();
+        //}
+        ////Destroy(smoke, 2f);
+        Instantiate(smokePre, transform.position, Quaternion.identity);
     }
 
     void StopPerfectEffect()

@@ -319,6 +319,9 @@ public class L2gameController : MonoBehaviour
                 L2CheckList.graderList.Clear();
             }
             Instantiate(perfect,spawnPos);
+
+            //cat anima
+            cat.PerfectEffect();
         }
         else
         {
@@ -338,6 +341,9 @@ public class L2gameController : MonoBehaviour
                 L2CheckList.graderList.Clear();
             }
             Instantiate(good,spawnPos);
+
+            //cat anima
+            cat.GoodEffect();
         }
         combo++;
         if (bestComboNum < combo)

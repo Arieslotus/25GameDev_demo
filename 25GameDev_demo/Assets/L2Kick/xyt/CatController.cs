@@ -34,7 +34,7 @@ public class CatController : MonoBehaviour
 
     [Header("miss")]
     public SpriteRenderer body_spriteRenderer;
-    public Material newMaterial; // 要切换的材质
+    public Material catMiss_mat; // 要切换的材质
     private Material bodyOriginalMaterial; // 存储原始材质
     public float materialChangeDuration = 0.2f; // 材质更换持续时间
 
@@ -43,6 +43,13 @@ public class CatController : MonoBehaviour
     private Sprite faceOriginalSprite;
     bool isMissing = false;
 
+    [Header("good")]
+    private Material bracketsOriginalMaterial; // 存储原始材质
+    public Material catGood_mat;
+    public SpriteRenderer smallBracket_sp, bigBracket_sp;
+
+    [Header("perfect")]
+    public Material catPerfect_mat;
     public enum KickType
     {
         Tap,
@@ -61,9 +68,7 @@ public class CatController : MonoBehaviour
         public bool isRetracting;//正在收脚
 
         public KickType currentKickType;
-
-        
-
+      
     }
     Foot footR, footL;
     Foot currentControlFoot;
@@ -139,6 +144,10 @@ public class CatController : MonoBehaviour
         if (face_spriteRenderer != null)
         {
             faceOriginalSprite = face_spriteRenderer.sprite; // 记录原始材质
+        }
+        if(smallBracket_sp != null)
+        {
+            bracketsOriginalMaterial = smallBracket_sp.material;
         }
 
     }
@@ -493,23 +502,55 @@ public class CatController : MonoBehaviour
     public void MissEffect()
     {
         DoJellyEffect();
-        if (newMaterial != null)
+        if (catMiss_mat != null)
         {
-            StartCoroutine(ChangeMaterialTemporarily());
+            StartCoroutine(ChangeBodyMaterialTemporarily(catMiss_mat));
         }
     }
 
-    IEnumerator ChangeMaterialTemporarily()
+    //used in game cotroller
+    public void GoodEffect()
+    {
+        if (catGood_mat != null)
+        {
+            StartCoroutine(ChangeBracketsMaterialTemporarily(catGood_mat));
+        }
+    }
+
+    //used in game cotroller
+    public void PerfectEffect()
+    {
+        if (catPerfect_mat != null)
+        {
+            StartCoroutine(ChangeBracketsMaterialTemporarily(catPerfect_mat));
+        }
+    }
+
+    IEnumerator ChangeBodyMaterialTemporarily(Material newMat)
     {
         if (body_spriteRenderer != null)
         {
-            body_spriteRenderer.sharedMaterial = newMaterial; // 更换材质
+            body_spriteRenderer.sharedMaterial = newMat; // 更换材质
             face_spriteRenderer.sprite = miss;
             isMissing = true;
             yield return new WaitForSeconds(materialChangeDuration); // 等待
             body_spriteRenderer.sharedMaterial = bodyOriginalMaterial; // 恢复原材质
             face_spriteRenderer.sprite = faceOriginalSprite;
             isMissing = false;
+        }
+    }
+    IEnumerator ChangeBracketsMaterialTemporarily(Material newMat)
+    {
+        if (smallBracket_sp != null && bigBracket_sp != null)
+        {
+            smallBracket_sp.sharedMaterial = newMat; // 更换材质
+            bigBracket_sp.sharedMaterial = newMat; // 更换材质
+
+            yield return new WaitForSeconds(materialChangeDuration); // 等待
+            smallBracket_sp.sharedMaterial = bracketsOriginalMaterial; // 恢复原材质
+            bigBracket_sp.sharedMaterial = bracketsOriginalMaterial; // 恢复原材质
+
+
         }
     }
 

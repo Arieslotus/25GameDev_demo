@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: L2_HueShift
+  m_Name: L2_HueShift_catPerfect
   m_Shader: {fileID: 4800000, guid: 38866914c59334d428c5cd0e6e84375c, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -31,6 +31,6 @@ Material:
     m_Floats:
     - _HsvBright: 1.006
     - _HsvSaturation: 2
-    - _HsvShift: 30
+    - _HsvShift: 360
     m_Colors: []
   m_BuildTextureStacks: []

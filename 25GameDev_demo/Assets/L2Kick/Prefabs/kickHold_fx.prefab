@@ -41,7 +41,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1809554589409164378}
   serializedVersion: 8
-  lengthInSec: 0.17
+  lengthInSec: 0.05
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -870,7 +870,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 29.89
+      scalar: 102.1
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -4874,7 +4874,7 @@ Animator:
   m_GameObject: {fileID: 4783857297458136527}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 444c92d8b0edfef4488ecbbe94b6936d, type: 2}
+  m_Controller: {fileID: 9100000, guid: 20396a50d86c35d4fb72b85572bf8450, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -4926,7 +4926,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1510063045, guid: 22c0c0e18f0fd2149a3c8963875c03a9, type: 3}
+  m_Sprite: {fileID: 1075509482, guid: 22c0c0e18f0fd2149a3c8963875c03a9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4959,8 +4959,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3842858990981420387}
   - component: {fileID: -1720270139752733676}
+  - component: {fileID: 7733363086263950521}
   m_Layer: 0
-  m_Name: kick_fx
+  m_Name: kickHold_fx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4993,5 +4994,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f764a82cc0fd3ef47bee9a7620ef11a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7733363086263950521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6785077793093284062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ee7e74f258aff2468a21cfd42ba8c09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

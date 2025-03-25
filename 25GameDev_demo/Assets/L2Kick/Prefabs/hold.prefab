@@ -179,12 +179,11 @@ MonoBehaviour:
   isSpaceReleased: 0
   perfectHoldPre: {fileID: 7523919858910161212, guid: f11fa62e517be3d49beb187d34edd832, type: 3}
   goodHoldPre: {fileID: 5669021005731153831, guid: 372e417eff5377e40a0c6b98519463dc, type: 3}
-  smokePre: {fileID: 6785077793093284062, guid: f9a1a71ca4a43384dbb283ad0430241c, type: 3}
+  smokePre: {fileID: 6785077793093284062, guid: 773ac235dbc19d14b8d5c2b47319db6a, type: 3}
   perfectHoldEffect: []
   goodHoldEffect: []
   smokeEffect: []
-  catRFoot: {fileID: 0}
-  catLFoot: {fileID: 0}
+  myFootStatus: 0
 --- !u!114 &7796560657021530552
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -64,12 +64,6 @@ public class L2noteController : MonoBehaviour
     void Start()
     {
         
-
-        
-        //goodTapEffect = goodTap.GetComponentsInChildren<ParticleSystem>();
-
-
-        //Debug.Log("checkrange" + checkRange);
         initialScale = transform.localScale;
 
         myTime = - FindObjectOfType<L2gameController>().moveToAccTime;

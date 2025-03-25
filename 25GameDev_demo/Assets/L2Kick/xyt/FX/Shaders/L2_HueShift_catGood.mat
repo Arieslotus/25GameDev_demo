@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: L2_Outline
-  m_Shader: {fileID: 4800000, guid: 1970d79e7f54f08499fab4cdc6c6b8d4, type: 3}
+  m_Name: L2_HueShift_catGood
+  m_Shader: {fileID: 4800000, guid: 38866914c59334d428c5cd0e6e84375c, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -27,17 +27,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _OutlineDistortTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _OutlineAlpha: 0.859
-    - _OutlineDistortAmount: 0.975
-    - _OutlineDistortTexXSpeed: -4.2
-    - _OutlineDistortTexYSpeed: -6.8
-    - _OutlinePixelWidth: -5.91
-    m_Colors:
-    - _OutlineColor: {r: 0, g: 0.40811634, b: 1, a: 1}
+    - _HsvBright: 1.006
+    - _HsvSaturation: 2
+    - _HsvShift: 165
+    m_Colors: []
   m_BuildTextureStacks: []
