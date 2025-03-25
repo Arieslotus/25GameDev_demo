@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
+//using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class L2noteController : MonoBehaviour
@@ -43,7 +43,7 @@ public class L2noteController : MonoBehaviour
     public GameObject perfectTapPre;
     public GameObject goodTapPre;
     public GameObject smokePre;
-    GameObject perfectTap;
+    GameObject tapEffect;
     GameObject goodTap;
     GameObject smoke;
     public ParticleSystem[] perfectTapEffect;
@@ -168,7 +168,7 @@ public class L2noteController : MonoBehaviour
         FindObjectOfType<L2gameController>().JudgeNote(myTime);
         L2CheckList.tapCheckList.Remove(this);
         //effect
-        PLayPerfectEffect();
+        PLayPerfectEffect(FindObjectOfType<L2gameController>().isPerfect);
 
         Destroy(gameObject);
         return true;
@@ -226,10 +226,19 @@ public class L2noteController : MonoBehaviour
         transform.localScale = initialScale * currentScaleFactor;
     }
 
-    void PLayPerfectEffect()
+    void PLayPerfectEffect(bool b)
     {
-        perfectTap = Instantiate(perfectTapPre, transform.position, Quaternion.identity);
-        perfectTapEffect = perfectTap.GetComponentsInChildren<ParticleSystem>();
+        if (b) //perfect
+        {
+            tapEffect = Instantiate(perfectTapPre, transform.position, Quaternion.identity);
+            perfectTapEffect = tapEffect.GetComponentsInChildren<ParticleSystem>();
+        }
+        else
+        {
+            tapEffect = Instantiate(goodTapPre, transform.position, Quaternion.identity);
+            perfectTapEffect = tapEffect.GetComponentsInChildren<ParticleSystem>();
+        }
+       
         smoke = Instantiate(smokePre, transform.position, Quaternion.identity);
         smokeEffect = smoke.GetComponentsInChildren<ParticleSystem>();
         foreach (ParticleSystem ps in smokeEffect)

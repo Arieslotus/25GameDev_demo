@@ -1,33 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-5632676397241969082
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/GamePlay/foamsOutOfCup
-  m_EditorClassIdentifier: 
-  Path: event:/GamePlay/foamsOutOfCup
-  Guid:
-    Data1: -533984567
-    Data2: 1256125225
-    Data3: 589248655
-    Data4: 512949290
-  Banks:
-  - {fileID: 8398465295367205990}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
---- !u!114 &-2245693981424090915
+--- !u!114 &-9010082985858383220
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -37,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
+  m_Name: bank:/Master.strings.bank
   m_EditorClassIdentifier: 
-  Path: E:/FMod/Projects/2503_gameDev_demo1/Build/Desktop/Master.bank
-  Name: Master
-  StudioPath: bank:/Master
-  lastModified: 638772464938492608
+  Path: ../../../FMod_Projects/Chinese_Ancient_Mathatics/Build/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 638502971850512272
   FileSizes:
   - Name: Desktop
-    Value: 1036
+    Value: 2410
   Exists: 1
---- !u!114 &-2121165876023203393
+--- !u!114 &-8813653265085711888
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -57,70 +30,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/bgm
+  m_Name: event:/BOOK/flipPage
   m_EditorClassIdentifier: 
-  Path: event:/bgm
+  Path: event:/BOOK/flipPage
   Guid:
-    Data1: -1054097917
-    Data2: 1223295911
-    Data3: 40949890
-    Data4: 627295684
+    Data1: 1453333241
+    Data2: 1097628700
+    Data3: 1346059448
+    Data4: -649624826
   Banks:
-  - {fileID: 714507803664920440}
-  IsStream: 1
-  Is3D: 0
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 58000
---- !u!114 &-1686758874416684898
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/GamePlay/water
-  m_EditorClassIdentifier: 
-  Path: event:/GamePlay/water
-  Guid:
-    Data1: -348764641
-    Data2: 1257413168
-    Data3: -1552308051
-    Data4: -81071447
-  Banks:
-  - {fileID: 8398465295367205990}
-  IsStream: 1
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
---- !u!114 &-51232397981713840
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/GamePlay/reduceFoam
-  m_EditorClassIdentifier: 
-  Path: event:/GamePlay/reduceFoam
-  Guid:
-    Data1: -1208497808
-    Data2: 1244220569
-    Data3: 895635102
-    Data4: -290358463
-  Banks:
-  - {fileID: 8398465295367205990}
+  - {fileID: 7219640546674076351}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -128,6 +47,582 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-8684989826455810720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/L2Chicken/roo_catch
+  m_EditorClassIdentifier: 
+  Path: event:/L2Chicken/roo_catch
+  Guid:
+    Data1: 62760294
+    Data2: 1090187735
+    Data3: 1543398819
+    Data4: 850004014
+  Banks:
+  - {fileID: 1551491985707648689}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-8614728972592279798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/L1Calculator/check_button
+  m_EditorClassIdentifier: 
+  Path: event:/L1Calculator/check_button
+  Guid:
+    Data1: 1382816176
+    Data2: 1271599707
+    Data3: -313117813
+    Data4: -2093328660
+  Banks:
+  - {fileID: -467206925958404408}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-8076514940022853824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/BGMSpecial
+  m_EditorClassIdentifier: 
+  Path: event:/BGMSpecial
+  Guid:
+    Data1: 373405894
+    Data2: 1274778729
+    Data3: 1380008844
+    Data4: -1896427764
+  Banks:
+  - {fileID: 1790236220071545845}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -1098049797690792318}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-7393626363199803227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/BOOK/SentenceOccur
+  m_EditorClassIdentifier: 
+  Path: event:/BOOK/SentenceOccur
+  Guid:
+    Data1: -588813661
+    Data2: 1326607162
+    Data3: -1312552005
+    Data4: -2124374236
+  Banks:
+  - {fileID: 7219640546674076351}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-6653441869079871358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/L3Star/oneStar
+  m_EditorClassIdentifier: 
+  Path: event:/L3Star/oneStar
+  Guid:
+    Data1: -450215187
+    Data2: 1235945700
+    Data3: 1944462977
+    Data4: 272240752
+  Banks:
+  - {fileID: -3935826073144525621}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-6430257178775612852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/L1Calculator/stamp
+  m_EditorClassIdentifier: 
+  Path: event:/L1Calculator/stamp
+  Guid:
+    Data1: 145341617
+    Data2: 1139653677
+    Data3: -1451589752
+    Data4: -129493914
+  Banks:
+  - {fileID: -467206925958404408}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-5735320107389988441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/BGM
+  m_EditorClassIdentifier: 
+  Path: event:/BGM
+  Guid:
+    Data1: 203816159
+    Data2: 1298681410
+    Data3: 1798916508
+    Data4: -1813136049
+  Banks:
+  - {fileID: 1790236220071545845}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 613542735332419407}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-5342933306615829684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Default/bingo
+  m_EditorClassIdentifier: 
+  Path: event:/Default/bingo
+  Guid:
+    Data1: -1888732185
+    Data2: 1185870365
+    Data3: -281048913
+    Data4: 455828369
+  Banks:
+  - {fileID: -467206925958404408}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-5091036558368488697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Default/newError
+  m_EditorClassIdentifier: 
+  Path: event:/Default/newError
+  Guid:
+    Data1: 473727904
+    Data2: 1327256250
+    Data3: 842293893
+    Data4: -394658833
+  Banks:
+  - {fileID: 1790236220071545845}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-4867237535612313700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Default/clickButton
+  m_EditorClassIdentifier: 
+  Path: event:/Default/clickButton
+  Guid:
+    Data1: -1949691229
+    Data2: 1194444649
+    Data3: 1191402683
+    Data4: 2135137788
+  Banks:
+  - {fileID: 1790236220071545845}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-4698308717602253195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/L1Calculator/crossX
+  m_EditorClassIdentifier: 
+  Path: event:/L1Calculator/crossX
+  Guid:
+    Data1: 644538743
+    Data2: 1329510825
+    Data3: -664303472
+    Data4: -784984444
+  Banks:
+  - {fileID: -467206925958404408}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-4396400299205973218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/MENU/bell
+  m_EditorClassIdentifier: 
+  Path: event:/MENU/bell
+  Guid:
+    Data1: -2052969152
+    Data2: 1175739804
+    Data3: 319186060
+    Data4: 1256349668
+  Banks:
+  - {fileID: 4339972643914895425}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-4311507937760096892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/ANIMA.bank
+  m_EditorClassIdentifier: 
+  Path: ../../../FMod_Projects/Chinese_Ancient_Mathatics/Build/Desktop/ANIMA.bank
+  Name: ANIMA
+  StudioPath: bank:/ANIMA
+  lastModified: 638502959316965257
+  FileSizes:
+  - Name: Desktop
+    Value: 224256
+  Exists: 1
+--- !u!114 &-4086205441656225199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/ANIMA/FinalAnimaSFX
+  m_EditorClassIdentifier: 
+  Path: event:/ANIMA/FinalAnimaSFX
+  Guid:
+    Data1: 134539781
+    Data2: 1116495049
+    Data3: 554335629
+    Data4: -970552517
+  Banks:
+  - {fileID: -4311507937760096892}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 138684
+--- !u!114 &-3935826073144525621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/L3Star.bank
+  m_EditorClassIdentifier: 
+  Path: ../../../FMod_Projects/Chinese_Ancient_Mathatics/Build/Desktop/L3Star.bank
+  Name: L3Star
+  StudioPath: bank:/L3Star
+  lastModified: 638502946063022663
+  FileSizes:
+  - Name: Desktop
+    Value: 6251232
+  Exists: 1
+--- !u!114 &-2545197850543894576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/L2Chicken/hen_catch
+  m_EditorClassIdentifier: 
+  Path: event:/L2Chicken/hen_catch
+  Guid:
+    Data1: 846259895
+    Data2: 1225966763
+    Data3: -1570219611
+    Data4: 780262161
+  Banks:
+  - {fileID: 1551491985707648689}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-1954927276012822611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/L3Star/starsCheck
+  m_EditorClassIdentifier: 
+  Path: event:/L3Star/starsCheck
+  Guid:
+    Data1: 1991377519
+    Data2: 1248209030
+    Data3: 907228833
+    Data4: 1474407807
+  Banks:
+  - {fileID: -3935826073144525621}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-1892442822111389626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/L2Chicken/feather
+  m_EditorClassIdentifier: 
+  Path: event:/L2Chicken/feather
+  Guid:
+    Data1: -260393389
+    Data2: 1076144815
+    Data3: 587558550
+    Data4: -1017044327
+  Banks:
+  - {fileID: 1551491985707648689}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-1098049797690792318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/BGMSpecial/BGMSpecial
+  m_EditorClassIdentifier: 
+  Name: BGMSpecial
+  StudioPath: 
+  Min: 0
+  Max: 4
+  Default: 0
+  ID:
+    data1: 3266186605
+    data2: 21110414
+  Type: 2
+  IsGlobal: 0
+  Labels:
+  - defult
+  - urgent
+  - startAnima
+  - finalAnima
+  - summerAroma
+  Exists: 1
+--- !u!114 &-944202733257092636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/timeDownCount/timer
+  m_EditorClassIdentifier: 
+  Name: timer
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2498551785
+    data2: 2634515540
+  Type: 2
+  IsGlobal: 0
+  Labels:
+  - default
+  - urgent
+  Exists: 1
+--- !u!114 &-635637518287957940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/L2Chicken/out
+  m_EditorClassIdentifier: 
+  Path: event:/L2Chicken/out
+  Guid:
+    Data1: -865299778
+    Data2: 1305781600
+    Data3: -700274009
+    Data4: 2054270150
+  Banks:
+  - {fileID: 1551491985707648689}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-467206925958404408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/L1Calculator.bank
+  m_EditorClassIdentifier: 
+  Path: ../../../FMod_Projects/Chinese_Ancient_Mathatics/Build/Desktop/L1Calculator.bank
+  Name: L1Calculator
+  StudioPath: bank:/L1Calculator
+  lastModified: 638501853927996225
+  FileSizes:
+  - Name: Desktop
+    Value: 130240
+  Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,30 +636,190 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: 5261214920036748743}
-  - {fileID: 714507803664920440}
-  - {fileID: 8398465295367205990}
-  - {fileID: 1568964886638697424}
-  - {fileID: -2245693981424090915}
+  - {fileID: -9010082985858383220}
+  - {fileID: -4311507937760096892}
+  - {fileID: 7219640546674076351}
+  - {fileID: 1790236220071545845}
+  - {fileID: -467206925958404408}
+  - {fileID: 1551491985707648689}
+  - {fileID: -3935826073144525621}
+  - {fileID: 5263764807794322101}
+  - {fileID: 4339972643914895425}
   EditorEvents:
-  - {fileID: -2121165876023203393}
-  - {fileID: -1686758874416684898}
-  - {fileID: 8280407123517772007}
-  - {fileID: 3270911657084649707}
-  - {fileID: 3021116283953858921}
-  - {fileID: -51232397981713840}
-  - {fileID: -5632676397241969082}
-  - {fileID: 8007935086697588725}
-  - {fileID: 4127399205303628992}
-  - {fileID: 3611543665569702242}
+  - {fileID: -4086205441656225199}
+  - {fileID: 3705829571170682108}
+  - {fileID: -7393626363199803227}
+  - {fileID: -8813653265085711888}
+  - {fileID: -5091036558368488697}
+  - {fileID: -4867237535612313700}
+  - {fileID: -8076514940022853824}
+  - {fileID: -5735320107389988441}
+  - {fileID: 321311358649538645}
+  - {fileID: 253149097860175588}
+  - {fileID: 3611773815522424204}
+  - {fileID: -4698308717602253195}
+  - {fileID: -8614728972592279798}
+  - {fileID: -6430257178775612852}
+  - {fileID: 5165521553334411921}
+  - {fileID: -5342933306615829684}
+  - {fileID: -1892442822111389626}
+  - {fileID: -8684989826455810720}
+  - {fileID: 273692089105862696}
+  - {fileID: 4811183130758859276}
+  - {fileID: -2545197850543894576}
+  - {fileID: -635637518287957940}
+  - {fileID: 6217650733632522643}
+  - {fileID: -1954927276012822611}
+  - {fileID: -6653441869079871358}
+  - {fileID: 1322393708374272027}
+  - {fileID: -4396400299205973218}
   EditorParameters: []
   MasterBanks:
-  - {fileID: -2245693981424090915}
+  - {fileID: 5263764807794322101}
   StringsBanks:
-  - {fileID: 5261214920036748743}
-  cacheTime: 638772524276983413
+  - {fileID: -9010082985858383220}
+  cacheTime: 638502986107659280
   cacheVersion: 131621
---- !u!114 &714507803664920440
+--- !u!114 &253149097860175588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/L1Calculator/clickBead
+  m_EditorClassIdentifier: 
+  Path: event:/L1Calculator/clickBead
+  Guid:
+    Data1: 1495109415
+    Data2: 1129636359
+    Data3: 1230226856
+    Data4: 2004927275
+  Banks:
+  - {fileID: -467206925958404408}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &273692089105862696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/L2Chicken/mouse_catch
+  m_EditorClassIdentifier: 
+  Path: event:/L2Chicken/mouse_catch
+  Guid:
+    Data1: 829688956
+    Data2: 1118359125
+    Data3: 1874221734
+    Data4: -147900466
+  Banks:
+  - {fileID: 1551491985707648689}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &321311358649538645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Default/error
+  m_EditorClassIdentifier: 
+  Path: event:/Default/error
+  Guid:
+    Data1: 1607570970
+    Data2: 1126383649
+    Data3: -536489855
+    Data4: -649413063
+  Banks:
+  - {fileID: -467206925958404408}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &613542735332419407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/BGM/scene
+  m_EditorClassIdentifier: 
+  Name: scene
+  StudioPath: 
+  Min: 0
+  Max: 6
+  Default: 0
+  ID:
+    data1: 4264605900
+    data2: 393370472
+  Type: 2
+  IsGlobal: 0
+  Labels:
+  - DefaultScene
+  - BookScene
+  - L1Scene
+  - L2Scene
+  - L3Scene
+  - StartAnimaScene
+  - FinalAnimaScene
+  Exists: 1
+--- !u!114 &1322393708374272027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/L3Star/aroma
+  m_EditorClassIdentifier: 
+  Path: event:/L3Star/aroma
+  Guid:
+    Data1: 300547056
+    Data2: 1220501276
+    Data3: 551403940
+    Data4: 1192017751
+  Banks:
+  - {fileID: -3935826073144525621}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 472607
+--- !u!114 &1551491985707648689
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -174,17 +829,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/BGM.bank
+  m_Name: bank:/L2Chicken.bank
   m_EditorClassIdentifier: 
-  Path: E:/FMod/Projects/2503_gameDev_demo1/Build/Desktop/BGM.bank
-  Name: BGM
-  StudioPath: bank:/BGM
-  lastModified: 638772494690279195
+  Path: ../../../FMod_Projects/Chinese_Ancient_Mathatics/Build/Desktop/L2Chicken.bank
+  Name: L2Chicken
+  StudioPath: bank:/L2Chicken
+  lastModified: 638502971224839364
   FileSizes:
   - Name: Desktop
-    Value: 2863072
+    Value: 269248
   Exists: 1
---- !u!114 &1568964886638697424
+--- !u!114 &1790236220071545845
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -194,17 +849,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/General.bank
+  m_Name: bank:/Default.bank
   m_EditorClassIdentifier: 
-  Path: E:/FMod/Projects/2503_gameDev_demo1/Build/Desktop/General.bank
-  Name: General
-  StudioPath: bank:/SFX/General
-  lastModified: 638772489848272905
+  Path: ../../../FMod_Projects/Chinese_Ancient_Mathatics/Build/Desktop/Default.bank
+  Name: Default
+  StudioPath: bank:/Default
+  lastModified: 638502986107659280
   FileSizes:
   - Name: Desktop
-    Value: 439584
+    Value: 15298688
   Exists: 1
---- !u!114 &3021116283953858921
+--- !u!114 &3611773815522424204
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -214,17 +869,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/General/gameEnd
+  m_Name: event:/Default/checkBigLevel
   m_EditorClassIdentifier: 
-  Path: event:/General/gameEnd
+  Path: event:/Default/checkBigLevel
   Guid:
-    Data1: 289104974
-    Data2: 1199616629
-    Data3: -1102809463
-    Data4: 627693671
+    Data1: -37463765
+    Data2: 1096839350
+    Data3: -1101136712
+    Data4: -559963612
   Banks:
-  - {fileID: 1568964886638697424}
-  - {fileID: 8398465295367205990}
+  - {fileID: -467206925958404408}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -232,7 +886,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
---- !u!114 &3270911657084649707
+--- !u!114 &3705829571170682108
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -242,78 +896,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/GamePlay/addFoam
+  m_Name: event:/ANIMA/StartAnimaSFX
   m_EditorClassIdentifier: 
-  Path: event:/GamePlay/addFoam
+  Path: event:/ANIMA/StartAnimaSFX
   Guid:
-    Data1: -909847992
-    Data2: 1074365054
-    Data3: 445528509
-    Data4: 1927306974
+    Data1: 13014194
+    Data2: 1129283340
+    Data3: -8532545
+    Data4: 1234008662
   Banks:
-  - {fileID: 8398465295367205990}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
---- !u!114 &3611543665569702242
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/General/gameWin
-  m_EditorClassIdentifier: 
-  Path: event:/General/gameWin
-  Guid:
-    Data1: 885321928
-    Data2: 1240987906
-    Data3: 1963866016
-    Data4: -546011030
-  Banks:
-  - {fileID: 1568964886638697424}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
---- !u!114 &4127399205303628992
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/General/error
-  m_EditorClassIdentifier: 
-  Path: event:/General/error
-  Guid:
-    Data1: -1349523673
-    Data2: 1221989933
-    Data3: -1205867338
-    Data4: 86138084
-  Banks:
-  - {fileID: 1568964886638697424}
+  - {fileID: -4311507937760096892}
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
---- !u!114 &5261214920036748743
+  Length: 10000
+--- !u!114 &4339972643914895425
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -323,17 +923,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.strings.bank
+  m_Name: bank:/MENU.bank
   m_EditorClassIdentifier: 
-  Path: E:/FMod/Projects/2503_gameDev_demo1/Build/Desktop/Master.strings.bank
-  Name: Master.strings
-  StudioPath: bank:/Master.strings
-  lastModified: 638772464938497771
+  Path: ../../../FMod_Projects/Chinese_Ancient_Mathatics/Build/Desktop/MENU.bank
+  Name: MENU
+  StudioPath: bank:/MENU
+  lastModified: 638501853929621838
   FileSizes:
   - Name: Desktop
-    Value: 1306
+    Value: 84352
   Exists: 1
---- !u!114 &8007935086697588725
+--- !u!114 &4811183130758859276
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -343,16 +943,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/General/gameFailed
+  m_Name: event:/L2Chicken/chi_catch
   m_EditorClassIdentifier: 
-  Path: event:/General/gameFailed
+  Path: event:/L2Chicken/chi_catch
   Guid:
-    Data1: -631851243
-    Data2: 1229722525
-    Data3: 1739408774
-    Data4: -1120579014
+    Data1: 1902196868
+    Data2: 1202476304
+    Data3: -631099231
+    Data4: -1390389169
   Banks:
-  - {fileID: 1568964886638697424}
+  - {fileID: 1551491985707648689}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -360,7 +960,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
---- !u!114 &8280407123517772007
+--- !u!114 &5165521553334411921
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -370,16 +970,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/General/write
+  m_Name: event:/L1Calculator/resume_button
   m_EditorClassIdentifier: 
-  Path: event:/General/write
+  Path: event:/L1Calculator/resume_button
   Guid:
-    Data1: -992911110
-    Data2: 1284971086
-    Data3: -1343041089
-    Data4: 1796169611
+    Data1: 2104581091
+    Data2: 1120308681
+    Data3: -2053995844
+    Data4: -156979026
   Banks:
-  - {fileID: 1568964886638697424}
+  - {fileID: -467206925958404408}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -387,7 +987,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
---- !u!114 &8398465295367205990
+--- !u!114 &5263764807794322101
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -397,13 +997,61 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/GamePlay.bank
+  m_Name: bank:/Master.bank
   m_EditorClassIdentifier: 
-  Path: E:/FMod/Projects/2503_gameDev_demo1/Build/Desktop/GamePlay.bank
-  Name: GamePlay
-  StudioPath: bank:/SFX/GamePlay
-  lastModified: 638772524276983413
+  Path: ../../../FMod_Projects/Chinese_Ancient_Mathatics/Build/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 638502971850502283
   FileSizes:
   - Name: Desktop
-    Value: 261568
+    Value: 1036
+  Exists: 1
+--- !u!114 &6217650733632522643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/L2Chicken/timeDownCount
+  m_EditorClassIdentifier: 
+  Path: event:/L2Chicken/timeDownCount
+  Guid:
+    Data1: 1291980492
+    Data2: 1112520384
+    Data3: -1548697945
+    Data4: -165577431
+  Banks:
+  - {fileID: 1551491985707648689}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -944202733257092636}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &7219640546674076351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/BOOK.bank
+  m_EditorClassIdentifier: 
+  Path: ../../../FMod_Projects/Chinese_Ancient_Mathatics/Build/Desktop/BOOK.bank
+  Name: BOOK
+  StudioPath: bank:/BOOK
+  lastModified: 638502676107486958
+  FileSizes:
+  - Name: Desktop
+    Value: 18496
   Exists: 1

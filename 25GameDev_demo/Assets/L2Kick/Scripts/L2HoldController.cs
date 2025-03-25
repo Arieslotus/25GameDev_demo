@@ -206,7 +206,7 @@ public class L2HoldController : MonoBehaviour
                     {
                         //淡出
                         //Debug.Log("淡出");
-                        StopPerfectEffect();
+                        //StopPerfectEffect();
                         Color color = GetComponent<SpriteRenderer>().color;
                         color.a = 0.1f;
                         GetComponent<SpriteRenderer>().color = color;
@@ -337,9 +337,9 @@ public class L2HoldController : MonoBehaviour
         }
         else
         {
-            Debug.Log("finish+stop effect");
+            //Debug.Log("finish+stop effect");
             myFootStatus = footStatus.none;
-            StopPerfectEffect();
+            //StopPerfectEffect();
             L2CheckList.headCheckList.Remove(this); // 从 holdCheckList 中移除
             Destroy(gameObject);
         }
@@ -403,18 +403,18 @@ public class L2HoldController : MonoBehaviour
         //Debug.Log("ins hold effect");
         //perfectHold = Instantiate(perfectHoldPre, transform.position, Quaternion.identity);
         //perfectHoldEffect = perfectHold.GetComponentsInChildren<ParticleSystem>();
-        //smoke = Instantiate(smokePre, transform.position, Quaternion.identity);
-        //smokeEffect = smoke.GetComponentsInChildren<ParticleSystem>();
-        //foreach (ParticleSystem ps in smokeEffect)
-        //{
-        //    ps.Play();
-        //}
+        smoke = Instantiate(smokePre, transform.position, Quaternion.identity);
+        smokeEffect = smoke.GetComponentsInChildren<ParticleSystem>();
+        foreach (ParticleSystem ps in smokeEffect)
+        {
+            ps.Play();
+        }
         //foreach (ParticleSystem ps in perfectHoldEffect)
         //{
         //    ps.Play();
         //}
         ////Destroy(smoke, 2f);
-        Instantiate(smokePre, transform.position, Quaternion.identity);
+        //Instantiate(smokePre, transform.position, Quaternion.identity);
     }
 
     void StopPerfectEffect()

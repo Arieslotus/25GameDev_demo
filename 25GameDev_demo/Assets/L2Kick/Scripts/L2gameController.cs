@@ -93,6 +93,17 @@ public class L2gameController : MonoBehaviour
     public int missNum;
     public int bestComboNum;
 
+    [Header("音效")]
+    public AudioSource keySound;
+    public AudioSource music;
+    public AudioClip sfx_correct_perfect;
+    public AudioClip sfx_correct_good;
+    public AudioClip sfx_miss;
+    public AudioClip sfx_engPageAppear;
+    public AudioClip bgm_endPage;
+    public AudioClip sfx_meow;
+
+    public bool isPerfect;
 
 
 
@@ -193,6 +204,11 @@ public class L2gameController : MonoBehaviour
         yield return new WaitForSeconds(2); // 等待延迟时间
 
         resultPage.gameObject.SetActive(true);
+        //audio
+        keySound.PlayOneShot(sfx_engPageAppear);
+        keySound.PlayOneShot(sfx_meow);
+        music.clip = bgm_endPage;
+        music.Play();
         //if (isCompleted)
         //{
         //    result.sprite = resultImage_Win;
@@ -278,14 +294,15 @@ public class L2gameController : MonoBehaviour
         for(int i = 0; i < eachLine.Length; i++)
         {
             string[] eachPart = eachLine[i].Split(",");
+            totalScore += scorePerPerfect;
             //tap
             if (eachPart.Length==2)
             {
                 timeStamps[i] = Convert.ToSingle(eachPart[0]);
                 noteType[i] = 1;
-                totalScore += scorePerPerfect;
+                
             }
-            //hold
+            //hold            
             else if (eachPart.Length==3)
             {
                 timeStamps[i] = Convert.ToSingle(eachPart[0]);
@@ -303,6 +320,7 @@ public class L2gameController : MonoBehaviour
         FindObjectOfType<L2CameraShake>().ShakeCamra();
         if (hitTime < perfectCheckTimeRange / 2) //perfect
         {
+            isPerfect = true;
             score += scorePerPerfect;
             perfectNum++;
             if (L2CheckList.graderList != null && L2CheckList.graderList.Count > 2)
@@ -322,9 +340,12 @@ public class L2gameController : MonoBehaviour
 
             //cat anima
             cat.PerfectEffect();
+            //audio
+            keySound.PlayOneShot(sfx_correct_perfect);
         }
         else
         {
+            isPerfect = false;
             score += scorePerGood;
             goodNum++;
             if (L2CheckList.graderList != null && L2CheckList.graderList.Count > 2)
@@ -344,6 +365,8 @@ public class L2gameController : MonoBehaviour
 
             //cat anima
             cat.GoodEffect();
+            //audio
+            keySound.PlayOneShot(sfx_correct_good);
         }
         combo++;
         if (bestComboNum < combo)
@@ -388,6 +411,8 @@ public class L2gameController : MonoBehaviour
         }
         Instantiate(miss,spawnPos);
         UI_combo.SetActive(false);
+        //audio
+        keySound.PlayOneShot(sfx_miss);
     }
 
 }

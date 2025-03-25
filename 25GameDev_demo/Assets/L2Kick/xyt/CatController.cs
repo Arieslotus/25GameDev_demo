@@ -50,6 +50,11 @@ public class CatController : MonoBehaviour
 
     [Header("perfect")]
     public Material catPerfect_mat;
+
+    //audio
+    public AudioSource catSoundTap, catSoundHold;
+    public AudioClip tap, hold;
+
     public enum KickType
     {
         Tap,
@@ -193,6 +198,9 @@ public class CatController : MonoBehaviour
 
             //dot
             DoJellyEffect();
+            //audio
+            //catSound.PlayOneShot(tap);
+            catSoundTap.PlayOneShot(tap);
 
         }
 
@@ -231,7 +239,7 @@ public class CatController : MonoBehaviour
                         if (L2CheckList.headCheckList[0].myFootStatus == footStatus.perfect)
                         {
                             //perfect
-                            Debug.Log("footStatus.perfect");
+                            //Debug.Log("footStatus.perfect");
                             perfectHoldR.SetActive(true);
                             //PlayPerfectEffect(perfectHoldR);
                         }
@@ -240,6 +248,9 @@ public class CatController : MonoBehaviour
                             //good
                         }
                     }
+
+                    //audio
+                    catSoundHold.Play();
 
                 }
                 else if (currentControlFoot.Id == 1)
@@ -256,7 +267,7 @@ public class CatController : MonoBehaviour
                         if (L2CheckList.headCheckList[0].myFootStatus == footStatus.perfect)
                         {
                             //perfect
-                            Debug.Log("footStatus.perfect");
+                            //Debug.Log("footStatus.perfect");
                             perfectHoldL.SetActive(true);
                             //PlayPerfectEffect(perfectHoldL);
                         }
@@ -265,6 +276,9 @@ public class CatController : MonoBehaviour
                             //good
                         }
                     }
+
+                    //audio
+                    catSoundHold.Play();
                 }
 
             }
@@ -289,20 +303,20 @@ public class CatController : MonoBehaviour
                 trailR2.GetComponent<TrailRenderer>().emitting = false;
                 trailR2.GetComponent<TrailRenderer>().enabled = false;
 
-                perfectHoldL.SetActive(false);
+                perfectHoldR.SetActive(false);
                 if (L2CheckList.headCheckList.Count > 0)
                 {
                     if (L2CheckList.headCheckList[0].myFootStatus == footStatus.none)
                     {
-                        //stop
-                        perfectHoldR.SetActive(false);
+                        perfectHoldL.SetActive(false);
                     }
                 }
                 else
                 {
-                    //stop
-                    perfectHoldR.SetActive(false);
+                    perfectHoldL.SetActive(false);
                 }
+                //audio
+                catSoundHold.Stop();
 
             }
             else if (currentControlFoot.Id == 1)
@@ -317,15 +331,15 @@ public class CatController : MonoBehaviour
                 {
                     if (L2CheckList.headCheckList[0].myFootStatus == footStatus.none)
                     {
-                        //stop
                         perfectHoldL.SetActive(false);
                     }
                 }
                 else
                 {
-                    //stop
                     perfectHoldL.SetActive(false);
                 }
+                //audio
+                catSoundHold.Stop();
             }
 
             //cat face

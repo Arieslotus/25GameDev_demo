@@ -5,22 +5,28 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/L1/L1Start.unity
     guid: 64452f0babeec7e4d8682f640488c060
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/L1/L1Beer.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/L1/L1BeerR2.unity
     guid: 8b141c040fadd2845b64448374a9be5c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/L1/L1End.unity
     guid: 544e21a4aef063e4cbf10788a2c3da9c
+  - enabled: 1
+    path: Assets/Scenes/L2/L2Start.unity
+    guid: 24c7ad43fad3a3e44a55c54ba9c481b6
+  - enabled: 1
+    path: Assets/Scenes/L2/L2Teach.unity
+    guid: 881d1a64b6f1fbd43a6925465be38d76
   - enabled: 1
     path: Assets/Scenes/L2/L2Kick.unity
     guid: 10bc83cb382361f4cbb929545c3da776
   - enabled: 1
-    path: Assets/Scenes/L2/L2Start.unity
-    guid: 24c7ad43fad3a3e44a55c54ba9c481b6
+    path: Assets/Scenes/L2/L2KickTotal.unity
+    guid: dc6a4d174cd562647b1dec75019551de
   m_configObjects: {}

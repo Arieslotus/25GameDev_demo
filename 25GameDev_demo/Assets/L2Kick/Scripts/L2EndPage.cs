@@ -64,29 +64,55 @@ public class L2EndPage : MonoBehaviour
         text_perfect.text = "" + controller.perfectNum;
         text_good.text = "" + controller.goodNum;
         text_miss.text = "" + controller.missNum;
-        if (controller.health > 0)
+        //if (controller.health > 0)
+        //{
+        //    if (score / controller.totalScore >= 1)
+        //    {
+        //        myLevel = level.SS;
+        //        image_level.sprite = sprite_level_S;
+        //    }
+        //    else if (score / controller.totalScore >= 0.8)
+        //    {
+        //        myLevel = level.S;
+        //        image_level.sprite = sprite_level_S;
+        //    }
+        //    else
+        //    {
+        //        myLevel = level.A;
+        //        image_level.sprite = sprite_level_A;
+        //    }
+        //}
+        //else
+        //{
+        //    myLevel = level.B;
+        //    image_level.sprite = sprite_level_B;
+        //}
+        Debug.Log("controller.totalScore" + controller.totalScore);
+        Debug.Log("score" + score);
+        if ((float)score/ (float)controller.totalScore >= 1f)
         {
-            if (score / controller.totalScore >= 1)
-            {
-                myLevel = level.SS;
-                image_level.sprite = sprite_level_S;
-            }
-            else if (score / controller.totalScore >= 0.8)
-            {
-                myLevel = level.S;
-                image_level.sprite = sprite_level_S;
-            }
-            else
-            {
-                myLevel = level.A;
-                image_level.sprite = sprite_level_A;
-            }
+            myLevel = level.S;
+            image_level.sprite = sprite_level_S;
+        }
+        else if ((float)score / (float)controller.totalScore >= 0.85f)
+        {
+            Debug.Log("S");
+            myLevel = level.S;
+            image_level.sprite = sprite_level_S;
+        }
+        else if ((float)score / (float)controller.totalScore >= 0.65f)
+        {
+            Debug.Log("A");
+            myLevel = level.A;
+            image_level.sprite = sprite_level_A;
         }
         else
         {
+            Debug.Log("B");
             myLevel = level.B;
             image_level.sprite = sprite_level_B;
         }
+
     }
 
     IEnumerator AnimateResultScreen()
@@ -136,6 +162,12 @@ public class L2EndPage : MonoBehaviour
     {
         L2CheckList.ResetCheckList();
         SceneManager.LoadScene("L2Kick");
+
+    }
+    public void OnClickRestartEasyButton()
+    {
+        L2CheckList.ResetCheckList();
+        SceneManager.LoadScene("L2KickTotal");
 
     }
     public void OnClickBackButton()

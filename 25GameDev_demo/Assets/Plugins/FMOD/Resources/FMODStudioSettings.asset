@@ -672,8 +672,8 @@ MonoBehaviour:
   switchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: E:/FMod/Projects/2503_gameDev_demo1/2503_gameDev_demo1.fspro
-  sourceBankPath: E:/FMod/Projects/2503_gameDev_demo1/Build
+  sourceProjectPath: ../../../FMod_Projects/Chinese_Ancient_Mathatics/Chinese_Ancient_Mathatics.fspro
+  sourceBankPath: ../../../FMod_Projects/Chinese_Ancient_Mathatics/Build
   sourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 1
@@ -697,9 +697,13 @@ MonoBehaviour:
   MasterBanks:
   - Master
   Banks:
-  - BGM
-  - GamePlay
-  - General
+  - ANIMA
+  - BOOK
+  - Default
+  - L1Calculator
+  - L2Chicken
+  - L3Star
+  - MENU
   BanksToLoad: []
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0
